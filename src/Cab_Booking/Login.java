@@ -109,9 +109,10 @@ public class Login extends javax.swing.JFrame {
 
                     ResultSet rs = con.s.executeQuery(sql);
                     if (rs.next()) {
-                        System.out.println("Login");
+                        
+                        new HomePage().setVisible(true);
                         this.setVisible(false);
-                        //new HomePage(txtUser.getText()).setVisible(true);
+                        
                     } else
 			JOptionPane.showMessageDialog(null, "Invalid Login or Password!");
                     this.setVisible(false);
