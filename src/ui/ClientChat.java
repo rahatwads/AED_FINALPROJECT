@@ -4,11 +4,24 @@
  */
 package ui;
 
+import static ui.ServerChat.dout;
+import static ui.ServerChat.ss;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import static ui.ServerChat.ss;
+
+
 /**
  *
  * @author madhulikadekate
  */
 public class ClientChat extends javax.swing.JFrame {
+    
+    static Socket s;
+    static DataInputStream dis;
+    static DataOutputStream dout;
 
     /**
      * Creates new form ClientChat
@@ -41,6 +54,11 @@ public class ClientChat extends javax.swing.JFrame {
         jScrollPane1.setViewportView(msg_area);
 
         msg_send.setText("Send");
+        msg_send.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                msg_sendActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,6 +91,20 @@ public class ClientChat extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void msg_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msg_sendActionPerformed
+        // TODO add your handling code here:
+        try{
+        String msg="";
+        msg=msg_text.getText();
+        dout.writeUTF(msg);
+        msg_text.setText("");
+        }
+        catch(Exception e)
+        {
+        //handle the exception here
+        }
+    }//GEN-LAST:event_msg_sendActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,6 +139,23 @@ public class ClientChat extends javax.swing.JFrame {
                 new ClientChat().setVisible(true);
             }
         });
+        
+        try {
+            String msgin = "";
+            
+            s = new Socket("127.0.0.1",1201); // ip address is of localhost because server is running on the same mschine
+            dis = new DataInputStream(s.getInputStream());
+            dout = new DataOutputStream(s.getOutputStream());
+
+            while (!msgin.equals("exit")) {
+                msgin = dis.readUTF();
+                msg_area.setText(msg_area.getText() + "\n Server : " + msgin);
+            }
+
+        } catch (Exception e) {
+            //handle the exception here
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
