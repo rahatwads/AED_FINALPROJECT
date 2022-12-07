@@ -4,11 +4,21 @@
  */
 package ui;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 /**
  *
  * @author madhulikadekate
  */
 public class ServerChat extends javax.swing.JFrame {
+    
+    static ServerSocket ss;
+    static Socket s;
+    static DataInputStream dis;
+    static DataOutputStream dout;
 
     /**
      * Creates new form ServerChat
@@ -39,6 +49,11 @@ public class ServerChat extends javax.swing.JFrame {
         jScrollPane1.setViewportView(msg_area);
 
         msg_send.setText("Send");
+        msg_send.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                msg_sendActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("ServerChat");
 
@@ -74,6 +89,20 @@ public class ServerChat extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void msg_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msg_sendActionPerformed
+        // TODO add your handling code here:
+        try{
+        String msg="";
+        msg=msg_text.getText();
+        dout.writeUTF(msg);
+        msg_text.setText("");
+        }
+        catch(Exception e)
+        {
+        //handle the exception here
+        }
+    }//GEN-LAST:event_msg_sendActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -107,6 +136,22 @@ public class ServerChat extends javax.swing.JFrame {
                 new ServerChat().setVisible(true);
             }
         });
+        
+        try {
+            String msgin = "";
+            ss = new ServerSocket(1201);
+            s = ss.accept();
+            dis = new DataInputStream(s.getInputStream());
+            dout = new DataOutputStream(s.getOutputStream());
+
+            while (!msgin.equals("exit")) {
+                msgin = dis.readUTF();
+                msg_area.setText(msg_area.getText() + "\n Cleint : " + msgin);
+            }
+
+        } catch (Exception e) {
+            //handle the exception here
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
