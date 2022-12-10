@@ -4,6 +4,8 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tanvikakde
@@ -44,6 +46,11 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
         });
 
         btnABack.setText("BACK");
+        btnABack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnABackActionPerformed(evt);
+            }
+        });
 
         lblTitle.setText("ADMIN LOGIN");
 
@@ -64,43 +71,39 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
+                        .addGap(193, 193, 193)
                         .addComponent(lblTitle))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAUsername)
-                            .addComponent(lblAPassword))
+                            .addComponent(lblAPassword)
+                            .addComponent(btnALogin))
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jAPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addComponent(btnALogin)
-                        .addGap(58, 58, 58)
-                        .addComponent(btnABack)))
-                .addContainerGap(132, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnABack)
+                            .addComponent(txtAUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(jAPassword))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(25, 25, 25)
+                .addComponent(lblTitle)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTitle)
-                        .addGap(49, 49, 49)
-                        .addComponent(lblAUsername))
+                    .addComponent(lblAUsername)
                     .addComponent(txtAUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAPassword)
                     .addComponent(jAPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnALogin)
                     .addComponent(btnABack))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,21 +113,29 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String username = txtAUsername.getText();
-        String password = jAPassword.toString();
+        String password = jAPassword.getText();
 
-        if(username.equals("admin") && password.equals("admin")){
-            Main m = new Main();
+        if(username.equals("admin") && password.equals("admin123")){
+            AdminMainMenueJFrame c = new AdminMainMenueJFrame();
             this.hide();
-            m.setVisible(true);
+            c.setVisible(true);
         }
         else{
-            JOptionPane.showMessageDialog(this,"Theek se likh gandu");
+            JOptionPane.showMessageDialog(this,"Incorrect Username/Password");
         }
     }//GEN-LAST:event_btnALoginActionPerformed
 
     private void txtAUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAUsernameActionPerformed
+
+    private void btnABackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnABackActionPerformed
+        // TODO add your handling code here:
+        
+        MainJFrame ur = new MainJFrame();
+        this.hide();
+        ur.setVisible(true);
+    }//GEN-LAST:event_btnABackActionPerformed
 
     /**
      * @param args the command line arguments

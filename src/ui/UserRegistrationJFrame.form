@@ -26,58 +26,65 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDob" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblLastName" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEmailid" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblDriverLicense" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDob" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblLastName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtLastName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtDob" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtCustomerId" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="btnCreateAccount" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnDLUpload" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                              <Component id="btnCreateAccount" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="txtEmailid" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtFirstName" alignment="0" pref="135" max="32767" attributes="0"/>
+                                      <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtDob" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Component id="lblCustomerId" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
-                      <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblCustomerId" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCustomerId" min="-2" pref="135" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="95" max="32767" attributes="0"/>
+              <EmptySpace pref="135" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblCustomerId" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCustomerId" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -104,8 +111,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDriverLicense" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnDLUpload" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEmailid" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtEmailid" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="38" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -118,14 +125,9 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnDLUpload">
+    <Component class="javax.swing.JLabel" name="lblEmailid">
       <Properties>
-        <Property name="text" type="java.lang.String" value="UPLOAD"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblDriverLicense">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="DRIVER&apos;S LICENSE:"/>
+        <Property name="text" type="java.lang.String" value="EMAIL ID:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTitle">
@@ -198,6 +200,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ADDRESS:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtEmailid">
     </Component>
   </SubComponents>
 </Form>

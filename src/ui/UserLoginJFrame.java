@@ -33,12 +33,23 @@ public class UserLoginJFrame extends javax.swing.JFrame {
         lblUDob = new javax.swing.JLabel();
         txtUUsername = new javax.swing.JTextField();
         jUPassword = new javax.swing.JPasswordField();
+        btnRegister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnULogin.setText("LOGIN");
+        btnULogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnULoginActionPerformed(evt);
+            }
+        });
 
         btnUBack.setText("BACK");
+        btnUBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUBackActionPerformed(evt);
+            }
+        });
 
         lblTitle.setText("USER LOGIN");
 
@@ -58,26 +69,41 @@ public class UserLoginJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnRegister.setText("REGISTER");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnULogin)
-                    .addComponent(lblUUsername)
-                    .addComponent(lblUDob))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(105, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblUUsername)
+                            .addComponent(lblUDob)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btnULogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jUPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtUUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jUPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(123, 154, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(btnUBack)))
-                .addGap(123, 123, 123))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnRegister)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnUBack)
+                        .addGap(75, 75, 75))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(186, 186, 186)
                 .addComponent(lblTitle)
@@ -99,6 +125,7 @@ public class UserLoginJFrame extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnULogin)
+                    .addComponent(btnRegister)
                     .addComponent(btnUBack))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -113,6 +140,30 @@ public class UserLoginJFrame extends javax.swing.JFrame {
     private void jUPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jUPasswordActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        
+        UserRegistrationJFrame ur = new UserRegistrationJFrame();
+        this.hide();
+        ur.setVisible(true);
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void btnULoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnULoginActionPerformed
+        // TODO add your handling code here:
+        
+        UserMainMenu umm = new UserMainMenu();
+        this.hide();
+        umm.setVisible(true);
+    }//GEN-LAST:event_btnULoginActionPerformed
+
+    private void btnUBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUBackActionPerformed
+        // TODO add your handling code here:
+        
+        MainJFrame ur = new MainJFrame();
+        this.hide();
+        ur.setVisible(true);
+    }//GEN-LAST:event_btnUBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,6 +201,7 @@ public class UserLoginJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnUBack;
     private javax.swing.JButton btnULogin;
     private javax.swing.JPasswordField jUPassword;

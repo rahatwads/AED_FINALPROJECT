@@ -4,6 +4,14 @@
  */
 package ui;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author tanvikakde
@@ -17,6 +25,12 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    
+
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,6 +114,11 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         });
 
         btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,19 +126,19 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblCarId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCarId, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblModel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtModel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblMake)
                         .addGap(18, 18, 18)
-                        .addComponent(txtMake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtMake))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -127,7 +146,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblFeePerDay)
                         .addGap(18, 18, 18)
-                        .addComponent(txtFeePerDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtFeePerDay)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(btnAdd)
@@ -137,7 +156,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
                 .addComponent(btnDelete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBack)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,10 +192,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
 
         jTblDisplay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Car ID", "Model", "Make", "Status", "Fee Per Day"
@@ -206,7 +222,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,6 +242,23 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    public void autoID()
+    {
+    
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            
+            
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    
+    
+    
+    }
     private void txtCarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCarIdActionPerformed
@@ -240,16 +273,90 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        
+        try{
+             Class.forName("com.mysql.cj.jdbc.Driver");
+             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+
+             int Car_Id = Integer.parseInt(txtCarId.getText());
+             String Model = txtModel.getText();
+             String Make = txtMake.getText();
+             String Status = (String) CBStatus.getSelectedItem();
+             int Fee_Per_Day = Integer.parseInt(txtFeePerDay.getText());
+             
+
+             Statement stm = c.createStatement();
+             String sql = "Insert into cars values(?,?,?,?,?)";
+             PreparedStatement pstmt = c.prepareStatement(sql);
+             pstmt.setInt (1,Car_Id);
+             pstmt.setString (2,Model);
+             pstmt.setString (3,Make);
+             pstmt.setString (4,Status);
+             pstmt.setInt (5,Fee_Per_Day);
+             
+             
+             
+                pstmt.execute();
+
+           
+
+             c.close();
+
+         } catch (Exception e){
+             System.out.println(e.getMessage());
+         }
+
+
 
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        
+        try{
+             Class.forName("com.mysql.cj.jdbc.Driver");
+             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+
+             int Car_Id = Integer.parseInt(txtCarId.getText());
+             String Model = txtModel.getText();
+             String Make = txtMake.getText();
+             String Status = (String) CBStatus.getSelectedItem();
+             int Fee_Per_Day = Integer.parseInt(txtFeePerDay.getText());
+             
+
+             Statement stm = c.createStatement();
+             String sql = "Insert into cars values(?,?,?,?,?)";
+             PreparedStatement pstmt = c.prepareStatement(sql);
+             pstmt.setInt (1,Car_Id);
+             pstmt.setString (2,Model);
+             pstmt.setString (3,Make);
+             pstmt.setString (4,Status);
+             pstmt.setInt (5,Fee_Per_Day);
+             
+             
+             
+                pstmt.execute();
+
+           
+
+             c.close();
+
+         } catch (Exception e){
+             System.out.println(e.getMessage());
+         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+                
+        AdminMainMenueJFrame amm = new AdminMainMenueJFrame();
+        this.hide();
+        amm.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
