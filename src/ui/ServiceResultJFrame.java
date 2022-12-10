@@ -4,18 +4,108 @@
  */
 package ui;
 
+import Cab_Booking.CarService;
+import java.awt.Color;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author madhulikadekate
  */
 public class ServiceResultJFrame extends javax.swing.JFrame {
+    
+    Connection conn=null;
+    PreparedStatement pst=null;
+    ResultSet rs=null;
+    String sqr;
+    
+    String idr;
+    String num;
+    String idc;
+    String model;
+    String name;
+    String result;
+    String date;
+    String charge;
 
     /**
      * Creates new form ServiceResultJFrame
      */
     public ServiceResultJFrame() {
         initComponents();
+         conn=CarService.connect();
+      //  autoId();
+        tablelord();
+        addBtn.setEnabled(false);
+      //  btnupdate.setEnabled(false);
+        dlBtn.setEnabled(false);
+    
     }
+    
+    private void update()
+    {
+    try {
+                String squpdate = "UPDATE `add_to_service` SET `status`='0' WHERE sid='"+IdTxt.getText()+"'";
+                pst=conn.prepareStatement(squpdate);
+                pst.execute();
+                //  tablelord();
+            } catch (Exception e) {
+            }
+    }
+    
+    private void clear()
+    {
+    
+        
+        IdTxt.setText("");
+        NumTxt.setText("");
+        IDTxt.setText("");
+        Modeltxt.setText("");
+        NameTxt.setText("");
+        resultTxt.setSelectedIndex(0);
+//        ((JTextField)date.getDateEditor().getUiComponent()).setText("");
+        charTxt.setText("");
+    }
+    
+     private void clearfild()
+    {
+    
+       
+        NumTxt.setText("");
+        IDTxt.setText("");
+        Modeltxt.setText("");
+        NameTxt.setText("");
+        resultTxt.setSelectedIndex(0);
+//        ((JTextField)date.getDateEditor().getUiComponent()).setText("");
+        charTxt.setText("");
+        
+    }
+     
+      private void getData()
+    {
+    
+        idr =IdTxt.getText();
+        num=NumTxt.getText();
+        model=Modeltxt.getText();
+        idc =IDTxt.getText();
+        name=NameTxt.getText();
+        result=resultTxt.getSelectedItem().toString();
+        
+//        date=((JTextField)date.getDateEditor().getUiComponent()).getText();
+        charge=charTxt.getText();
+        
+    
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +116,397 @@ public class ServiceResultJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        vehLab = new javax.swing.JLabel();
+        resultTxt = new javax.swing.JComboBox<>();
+        IDTxt = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        NameTxt = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        NumTxt = new javax.swing.JTextField();
+        Modeltxt = new javax.swing.JTextField();
+        IdTxt = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        datetxt = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        charTxt = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        SerTxt = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        resultTbl = new javax.swing.JTable();
+        addBtn = new javax.swing.JButton();
+        dlBtn = new javax.swing.JButton();
+        homeBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        vehLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        vehLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vehLab.setText("Servicing Result");
+
+        resultTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Complete", "Incomplete" }));
+        resultTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resultTxtActionPerformed(evt);
+            }
+        });
+
+        IDTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                IDTxtKeyReleased(evt);
+            }
+        });
+
+        jLabel8.setText("Name :");
+
+        jLabel2.setText("Vehicle Number :");
+
+        jLabel4.setText("Vehicle Model :");
+
+        jLabel5.setText("Result:");
+
+        NumTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                NumTxtKeyReleased(evt);
+            }
+        });
+
+        IdTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                IdTxtKeyReleased(evt);
+            }
+        });
+
+        jLabel7.setText("Service ID :");
+
+        jLabel3.setText("Customer ID :");
+
+        jLabel6.setText("Date :");
+
+        jLabel9.setText("Charges :");
+
+        jLabel1.setText("Service ID :");
+
+        SerTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SerTxtActionPerformed(evt);
+            }
+        });
+        SerTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                SerTxtKeyReleased(evt);
+            }
+        });
+
+        resultTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Service ID", "Vehicle Number", "Customer ID", "Vehicle Model", "Name", "Result", "Date", "Charges"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        resultTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                resultTblMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(resultTbl);
+
+        addBtn.setText("Add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+
+        dlBtn.setText("Delete");
+        dlBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlBtnActionPerformed(evt);
+            }
+        });
+
+        homeBtn.setText("Home");
+        homeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(dlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(198, 198, 198))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(467, 467, 467)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(SerTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(resultTxt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Modeltxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(NameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(IDTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(charTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(IdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(vehLab, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(vehLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(IdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel2))
+                    .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel3))
+                    .addComponent(IDTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel4))
+                    .addComponent(Modeltxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel8))
+                    .addComponent(NameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(resultTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel9))
+                    .addComponent(charTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SerTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void resultTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resultTxtActionPerformed
+
+    private void IDTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDTxtKeyReleased
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_IDTxtKeyReleased
+
+    private void NumTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumTxtKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NumTxtKeyReleased
+
+    private void SerTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SerTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SerTxtActionPerformed
+
+    private void SerTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SerTxtKeyReleased
+        // TODO add your handling code here:
+        clear();
+        try {
+
+            String parseSql="SELECT `sid` as 'Service ID', `v_number` as 'Vehicle Number', `model` as 'Model', `cid` as 'Customer ID', `cname` as 'Customer Name', `service` as 'Services', `item_replace` as 'Items Replace', `result` as 'Result', `other` as 'Other', `date` as 'Date', `charge` as 'Charge' FROM `service_complete`";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+            resultTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            theader();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+
+    }//GEN-LAST:event_SerTxtKeyReleased
+
+    private void resultTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultTblMouseClicked
+        // TODO add your handling code here:
+           DefaultTableModel tmodel=(DefaultTableModel)resultTbl.getModel();
+        int selectrowindex=resultTbl.getSelectedRow();
+        
+        IdTxt.setText(tmodel.getValueAt(selectrowindex, 0).toString());
+         NumTxt.setText(tmodel.getValueAt(selectrowindex, 1).toString());
+        IDTxt.setText(tmodel.getValueAt(selectrowindex, 2).toString());
+        
+        Modeltxt.setText(tmodel.getValueAt(selectrowindex, 3).toString());
+        NameTxt.setText(tmodel.getValueAt(selectrowindex, 4).toString());
+        resultTxt.setSelectedItem(tmodel.getValueAt(selectrowindex, 7).toString());
+ 
+//        ((JTextField)date.getDateEditor().getUiComponent()).setText(tmodel.getValueAt(selectrowindex, 9).toString());
+        charTxt.setText(tmodel.getValueAt(selectrowindex, 10).toString());
+        
+        
+        dlBtn.setEnabled(true);  
+
+    }//GEN-LAST:event_resultTblMouseClicked
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+        getData();
+        
+         try {
+            String q= "INSERT INTO `service_complete`(`sid`, `v_number`, `model`, `cid`, `cname`, `service`, `item_replace`, `result`, `other`, `date`, `charge`, status) VALUES ('"+idr+"','"+num+"','"+model+"','"+idc+"','"+name+"' ,'"+result+"','"+date+"','"+charge+"','0')";
+            pst=conn.prepareStatement(q);
+            pst.execute();
+          //  JOptionPane.showMessageDialog(rootPane,"Successfully registered");
+
+        }
+        catch (Exception e)
+        {
+
+            JOptionPane.showMessageDialog(rootPane,e);
+        }
+       // it_record();
+        
+         update();
+        clear();
+       // autoId();
+        tablelord();
+     
+
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void dlBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlBtnActionPerformed
+        // TODO add your handling code here:
+         getData();
+        int x=JOptionPane.showConfirmDialog(rootPane, "Do you realy want to delete");
+        if(x==0)
+        {
+            try {
+                String sql="DELETE FROM service_complete where sid='"+ IdTxt.getText() +"'";
+                pst=conn.prepareStatement(sql);
+                pst.execute();
+
+                tablelord();
+                clear();
+               // btnupdate.setEnabled(false);
+        dlBtn.setEnabled(false);
+            } catch (Exception e) {
+            }
+        }
+        
+     
+    }//GEN-LAST:event_dlBtnActionPerformed
+
+    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
+        // TODO add your handling code here:
+        HomeJFrame Home = new HomeJFrame();
+        this.hide();
+        Home.setVisible(true);
+    }//GEN-LAST:event_homeBtnActionPerformed
+
+    private void IdTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdTxtKeyReleased
+        // TODO add your handling code here:
+        try {
+
+            String parseSql="SELECT `sid`, `vnumber`, `model`, `modelname`, `nic`, `oname`, `stype`, `date`, `status` FROM `add_to_service` where sid= '"+IdTxt.getText()+"'";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+             if(rs.next())
+                {
+                    IdTxt.setText(rs.getString("sid"));
+                    NumTxt.setText(rs.getString("vnumber"));
+                    Modeltxt.setText(rs.getString("modelname"));
+                    IDTxt.setText(rs.getString("nic"));
+                    NameTxt.setText(rs.getString("oname"));                         
+                }
+             else
+             {
+        
+             }
+            addBtn.setEnabled(true); 
+
+        } catch (Exception e) {
+              JOptionPane.showInternalConfirmDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_IdTxtKeyReleased
 
     /**
      * @param args the command line arguments
@@ -78,5 +544,68 @@ public class ServiceResultJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField IDTxt;
+    private javax.swing.JTextField IdTxt;
+    private javax.swing.JTextField Modeltxt;
+    private javax.swing.JTextField NameTxt;
+    private javax.swing.JTextField NumTxt;
+    private javax.swing.JTextField SerTxt;
+    private javax.swing.JButton addBtn;
+    private javax.swing.JTextField charTxt;
+    private com.toedter.calendar.JDateChooser datetxt;
+    private javax.swing.JButton dlBtn;
+    private javax.swing.JButton homeBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable resultTbl;
+    private javax.swing.JComboBox<String> resultTxt;
+    private javax.swing.JLabel vehLab;
     // End of variables declaration//GEN-END:variables
+
+    private void tablelord() {
+        try {
+            String sql="SELECT `sid` as 'Service ID', `v_number` as 'Vehicle Number', `model` as 'Model', `cid` as 'Customer ID', `cname` as 'Customer Name', `service` as 'Services', `item_replace` as 'Items Replace', `result` as 'Result', `other` as 'Other', `date` as 'Date', `charge` as 'Charge' FROM `service_complete`";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            resultTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+       theader();
+    }
+
+    private void theader() {
+       JTableHeader thead = resultTbl.getTableHeader();
+       thead.setForeground(Color.BLUE);
+    
+       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       
+        TableColumn col1=resultTbl.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(80);
+        TableColumn col2=resultTbl.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(130);
+        TableColumn col3=resultTbl.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(150);
+        TableColumn col4=resultTbl.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(100);
+        TableColumn col5=resultTbl.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(105);
+        TableColumn col6=resultTbl.getColumnModel().getColumn(5);
+        col6.setPreferredWidth(150);
+        TableColumn col7=resultTbl.getColumnModel().getColumn(6);
+        col7.setPreferredWidth(110);
+         TableColumn col8=resultTbl.getColumnModel().getColumn(7);
+        col8.setPreferredWidth(110);
+  
+    }
 }
+
