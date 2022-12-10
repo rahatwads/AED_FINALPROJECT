@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ui;
 
 import Cab_Booking.CarService;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+//import net.proteanit.sql.DbUtils;
+
 
 /**
  *
@@ -35,20 +40,97 @@ public class VehicalJFrame extends javax.swing.JFrame {
         conn=CarService.connect();
         tablelord();
 
-//       date.setText(Home.date);
+//      date.setText(Home.date);
     }
     
     private void getData()
     {
     
-        vnum = txtvnum.getText();
-        nic = txtnic.getText();
-        oname=txtoname.getText();
-        model = txtmodel.getText();
-        modelnum = txtmodelnum.getText();
-        type = cmbtype.getSelectedItem().toString();
+        num = numTxt.getText();
+        name =nameTxt.getText();
+        id = idTxt.getText();
+        model = modelTxt.getText();
+        type = fuel.getSelectedItem().toString();
     
     }
+    
+    private void clear()
+    {
+    numTxt.setText("");
+    nameTxt.setText("");
+    idTxt.setText("");
+    modelTxt.setText("");
+    fuel.setSelectedIndex(0);
+//    date.setText("");  
+    }  
+    
+    private void tablelord()
+    {
+        try {
+            String sql="SELECT `v_num` as 'Vehicle Number', `nic` as 'NIC Number', `name` as 'Name', `v_model` as 'Vehicle Model', `model_num` as 'Model Number', `fual_type` as 'Fual Type', `date` as 'Date' FROM `add_vehicle`";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            vehTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+       theader();
+    }
+    
+      private void  theader()
+    {
+        try {
+            JTableHeader thead = vehTbl.getTableHeader();
+       thead.setForeground(Color.BLUE);
+    
+       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       
+        TableColumn col1=vehTbl.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(120);
+        TableColumn col2=vehTbl.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(120);
+        TableColumn col3=vehTbl.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(120);
+        TableColumn col4=vehTbl.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(120);
+        TableColumn col5=vehTbl.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(120);
+        
+        
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        } 
+    }
+            private void recipt()
+    {
+        try {
+            billTxt.append(" Vehicle Service Center \n" +
+            "  No. 82/1/A Kings Street, Kandy. \n" +
+            "  0777-000000 / 000000000  \n" +
+            "  Email: test@gmail.com  \n" +
+           
+            "\n=================================\n\n" +
+            "Vehicle Number: " +numTxt.getText()+ "\n" +
+            "Customer NIC Id:" +idTxt.getText()+ "\n" +
+            "Customer Name:" +nameTxt.getText()+ "\n" +
+            "Vehicle Model: \t" +modelTxt.getText()+ "\n" +
+            "Fual Type: \t" +fuel.getSelectedItem().toString()+ "\n" +
+//            "Fault: \t"+"\n" +date.getText()+ "\n" +
+//            "Date: \t" +Home.date+ "\n" +
+            
+            "\n=================================\n\n"+
+              "Thank You...."+ "\n\n\n" 
+             
+                    
+            
+            );
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -338,6 +420,19 @@ public class VehicalJFrame extends javax.swing.JFrame {
 
     private void numsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numsearchKeyReleased
         // TODO add your handling code here:
+         getData();
+        
+         try {
+
+            String parseSql="SELECT `v_num` as 'Vehicle Number', `nic` as 'NIC Number', `name` as 'Name', `v_model` as 'Vehicle Model', `model_num` as 'Model Number', `fual_type` as 'Fual Type', `date` as 'Date' FROM `add_vehicle` where v_num Like'%"+numsearch.getText()+"%'";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+            vehTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            theader();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }  
+        
         //        lblccid.setText("");
   
 
@@ -345,31 +440,119 @@ public class VehicalJFrame extends javax.swing.JFrame {
 
     private void vehTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vehTblMouseClicked
         // TODO add your handling code here:
+     try {
+             DefaultTableModel tmodel=(DefaultTableModel)vehTbl.getModel();
+        int selectrowindex=vehTbl.getSelectedRow();
         
+        numTxt.setText(tmodel.getValueAt(selectrowindex, 0).toString());
+        idTxt.setText(tmodel.getValueAt(selectrowindex, 1).toString());
+        nameTxt.setText(tmodel.getValueAt(selectrowindex, 2).toString());
+        modelTxt.setText(tmodel.getValueAt(selectrowindex, 3).toString());
+       fuel.setSelectedItem(tmodel.getValueAt(selectrowindex, 4).toString());
+//        date.setText(tmodel.getValueAt(selectrowindex, 6).toString());
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }    
     }//GEN-LAST:event_vehTblMouseClicked
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         // TODO add your handling code here:
+        HomeJFrame Home = new HomeJFrame();
+        this.hide();
+        Home.setVisible(true);
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
+         getData();
+        
+         try {
+            String q= "INSERT INTO `add_vehicle`(`v_num`, `nic`, `name`, `v_model`, `model_num`, `fual_type`, `date`) VALUES ('"+num+"','"+id+"','"+name+"' ,'"+model+"','"+fuel+"'')";
+            pst=conn.prepareStatement(q);
+            pst.execute();
+           JOptionPane.showMessageDialog(rootPane,"Successfully registered");
+
+           recipt();
+           clear();
+           tablelord();
+        }
+        catch (Exception e)
+        {
+
+            JOptionPane.showMessageDialog(rootPane,e);
+        }   
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void dlBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlBtnActionPerformed
         // TODO add your handling code here:
+         int x=JOptionPane.showConfirmDialog(rootPane, "Do you realy want to delete");
+        if(x==0)
+        {
+            try {
+                String sql="DELETE FROM add_vehicle where v_num='"+ numTxt.getText() +"'";
+                pst=conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(rootPane, "Successfully Deleted");
+                tablelord();
+                clear();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+        }
     }//GEN-LAST:event_dlBtnActionPerformed
 
     private void printBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printBtnActionPerformed
         // TODO add your handling code here:
+        try {
+            billTxt.print();
+           billTxt.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
     }//GEN-LAST:event_printBtnActionPerformed
 
     private void uptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uptBtnActionPerformed
         // TODO add your handling code here:
+         getData();
+         int x=JOptionPane.showConfirmDialog(rootPane, "Do you realy want to update");
+        if(x==0)
+        {
+            try {
+                String squpdate = "UPDATE `add_vehicle` SET `nic`='"+id+"',`name`='"+name+"',`v_model`='"+model+"',`fual_type`='"+fuel+"' WHERE v_num='"+numTxt.getText()+"'";
+                pst=conn.prepareStatement(squpdate);
+                pst.execute();
+               JOptionPane.showMessageDialog(rootPane, "Successfully Updated");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+
+        }
+
+        clear();
+        tablelord();
     }//GEN-LAST:event_uptBtnActionPerformed
 
     private void idTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idTxtKeyReleased
         // TODO add your handling code here:
+        try {
+            
+             String sql="SELECT `cid`, `c_name`, `c_adress`, `c_ho_num`, `c_mo_num`, `c_email`, `c_date` FROM `customer` WHERE cid='"+idTxt.getText()+"'";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            if(rs.next())
+            {
+                nameTxt.setText(rs.getString("c_name"));
+            }
+            else
+            {
+            
+                nameTxt.setText("");
+            }
+            
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_idTxtKeyReleased
 
     /**
@@ -434,7 +617,4 @@ public class VehicalJFrame extends javax.swing.JFrame {
     private javax.swing.JTable vehTbl;
     // End of variables declaration//GEN-END:variables
 
-    private void tablelord() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
