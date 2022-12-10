@@ -4,6 +4,7 @@
  */
 package ui;
 
+import static java.awt.AWTEventMulticaster.add;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
@@ -11,7 +12,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.*;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author tanvikakde
@@ -23,15 +27,10 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
      */
     public CarRegistrationJFrame() {
         initComponents();
-        autoID();
+        //autoID();
+        Update_Table();
     }
 
-    
-    
-
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,7 +57,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTblDisplay = new javax.swing.JTable();
+        tblDisplay = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -191,7 +190,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jTblDisplay.setModel(new javax.swing.table.DefaultTableModel(
+        tblDisplay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -207,7 +206,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTblDisplay);
+        jScrollPane2.setViewportView(tblDisplay);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,40 +242,69 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    public void autoID()
-    {
-    
+//    public void autoID() {
+//
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+//            Statement s = c.createStatement();
+//
+//            ResultSet rs = s.executeQuery("SELECT MAX(CAR_ID) FROM CARS");
+//            rs.next();
+//            rs.getString("MAX(CAR_ID)");
+//
+//            if (rs.getString("MAX(CAR_ID)") == null) {
+//                txtCarId.setText("C0001");
+//            } else {
+//                long id = Long.parseLong(rs.getString("MAX(CAR_ID)").substring(2, rs.getString("MAX(CAR_ID)").length()));
+//                id++;
+//
+//                txtCarId.setText("C0" + String.format("%03d", id));
+//
+//            }
+//
+//        } catch (Exception ex) {
+//            System.out.println(ex);
+//        }
+//
+//    }
+
+    public void Update_Table() {
+
+        int r;
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
-            Statement s = c.createStatement();
-            
-            ResultSet rs = s.executeQuery("SELECT MAX(CAR_ID) FROM CARS");
-            rs.next();
-            rs.getString("MAX(CAR_ID)");
-            
-            if(rs.getString("MAX(CAR_ID)")==null)
-            {
-                    txtCarId.setText("C0001");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            PreparedStatement pstmt = c.prepareStatement("SELECT * FROM CARS");
+            ResultSet rs = pstmt.executeQuery();
+
+            ResultSetMetaData rd = rs.getMetaData();
+            r = rd.getColumnCount();
+            DefaultTableModel df = (DefaultTableModel) tblDisplay.getModel();
+            df.setRowCount(0);
+
+            while (rs.next()) {
+
+                Vector v2 = new Vector();
+
+                for (int i = 1; i <= r; i++) {
+                    v2.add(rs.getString("CAR_ID"));
+                    v2.add(rs.getString("MODEL"));
+                    v2.add(rs.getString("MAKE"));
+                    v2.add(rs.getString("STATUS"));
+                    v2.add(rs.getString("FEE_PER_DAY"));
+
+                }
+                df.addRow(v2);
+
             }
-            else
-            {
-                 long id = Long.parseLong(rs.getString("MAX(CAR_ID)").substring(2, rs.getString("MAX(CAR_ID)").length()));
-                 id++;
-                 
-                 txtCarId.setText("C0"+ String.format("%03d", id));
-            
-            }
-            
+
         } catch (Exception ex) {
             System.out.println(ex);
         }
-    
-    
-    
     }
+
     private void txtCarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCarIdActionPerformed
@@ -291,77 +319,78 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+
+            int Car_Id = Integer.parseInt(txtCarId.getText());
+            String Model = txtModel.getText();
+            String Make = txtMake.getText();
+            String Status = (String) CBStatus.getSelectedItem();
+            int Fee_Per_Day = Integer.parseInt(txtFeePerDay.getText());
+
+            Statement stm = c.createStatement();
+            //String sql = "Insert into cars values(?,?,?,?,?)";
+            PreparedStatement pstmt = c.prepareStatement("INSERT INTO CARS(CAR_ID, MODEL, MAKE, STATUS, FEE_PER_DAY) VALUES(?,?,?,?,?)");
+            pstmt.setInt (1,Car_Id);
+            pstmt.setString(2, Model);
+            pstmt.setString(3, Make);
+            pstmt.setString(4, Status);
+            pstmt.setInt(5, Fee_Per_Day);
+     
+            pstmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Car Has Been Added!");
+           // populateCARS();
+            txtCarId.setText("");
+            txtModel.setText("");
+            txtMake.setText("");
+            CBStatus.setSelectedIndex(-1);
+            txtFeePerDay.setText("");
+            txtModel.requestFocus();
+            //autoID();
+            Update_Table();
+
+            c.close();
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         
-        try{
-             Class.forName("com.mysql.cj.jdbc.Driver");
-             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
-
-             int Car_Id = Integer.parseInt(txtCarId.getText());
-             String Model = txtModel.getText();
-             String Make = txtMake.getText();
-             String Status = (String) CBStatus.getSelectedItem();
-             int Fee_Per_Day = Integer.parseInt(txtFeePerDay.getText());
-             
-
-             Statement stm = c.createStatement();
-             String sql = "Insert into cars values(?,?,?,?,?)";
-             PreparedStatement pstmt = c.prepareStatement(sql);
-             //pstmt.setInt (1,Car_Id);
-             pstmt.setString (2,Model);
-             pstmt.setString (3,Make);
-             pstmt.setString (4,Status);
-             pstmt.setInt (5,Fee_Per_Day);
-             
-           
-             
-                pstmt.execute();
-
-             c.close();
-             
-             JOptionPane.showMessageDialog(this,"Car Has Been Added!");
-
-         } catch (Exception e){
-             System.out.println(e.getMessage());
-         }
-
-
 
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        
-        try{
-             Class.forName("com.mysql.cj.jdbc.Driver");
-             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
 
-             int Car_Id = Integer.parseInt(txtCarId.getText());
-             String Model = txtModel.getText();
-             String Make = txtMake.getText();
-             String Status = (String) CBStatus.getSelectedItem();
-             int Fee_Per_Day = Integer.parseInt(txtFeePerDay.getText());
-             
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
 
-             Statement stm = c.createStatement();
-             String sql = "Insert into cars values(?,?,?,?,?)";
-             PreparedStatement pstmt = c.prepareStatement(sql);
-             pstmt.setInt (1,Car_Id);
-             pstmt.setString (2,Model);
-             pstmt.setString (3,Make);
-             pstmt.setString (4,Status);
-             pstmt.setInt (5,Fee_Per_Day);
-             
-             
-             
-                pstmt.execute();
+            int Car_Id = Integer.parseInt(txtCarId.getText());
+            String Model = txtModel.getText();
+            String Make = txtMake.getText();
+            String Status = (String) CBStatus.getSelectedItem();
+            int Fee_Per_Day = Integer.parseInt(txtFeePerDay.getText());
 
-           
+            Statement stm = c.createStatement();
+            String sql = "Insert into cars values(?,?,?,?,?)";
+            PreparedStatement pstmt = c.prepareStatement(sql);
+            pstmt.setInt(1, Car_Id);
+            pstmt.setString(2, Model);
+            pstmt.setString(3, Make);
+            pstmt.setString(4, Status);
+            pstmt.setInt(5, Fee_Per_Day);
 
-             c.close();
+            pstmt.execute();
 
-         } catch (Exception e){
-             System.out.println(e.getMessage());
-         }
+            c.close();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -370,7 +399,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-                
+
         AdminMainMenueJFrame amm = new AdminMainMenueJFrame();
         this.hide();
         amm.setVisible(true);
@@ -420,12 +449,12 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTblDisplay;
     private javax.swing.JLabel lblCarId;
     private javax.swing.JLabel lblFeePerDay;
     private javax.swing.JLabel lblMake;
     private javax.swing.JLabel lblModel;
     private javax.swing.JLabel lblStatus;
+    private javax.swing.JTable tblDisplay;
     private javax.swing.JTextField txtCarId;
     private javax.swing.JTextField txtFeePerDay;
     private javax.swing.JTextField txtMake;
