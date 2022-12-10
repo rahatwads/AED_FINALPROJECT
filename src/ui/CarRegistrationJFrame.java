@@ -23,6 +23,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
      */
     public CarRegistrationJFrame() {
         initComponents();
+        autoID();
     }
 
     
@@ -248,9 +249,26 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
     {
     
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            Statement s = c.createStatement();
             
+            ResultSet rs = s.executeQuery("SELECT MAX(CAR_ID) FROM CARS");
+            rs.next();
+            rs.getString("MAX(CAR_ID)");
+            
+            if(rs.getString("MAX(CAR_ID)")==null)
+            {
+                    txtCarId.setText("C0001");
+            }
+            else
+            {
+                 long id = Long.parseLong(rs.getString("MAX(CAR_ID)").substring(2, rs.getString("MAX(CAR_ID)").length()));
+                 id++;
+                 
+                 txtCarId.setText("C0"+ String.format("%03d", id));
+            
+            }
             
         } catch (Exception ex) {
             System.out.println(ex);
@@ -288,19 +306,19 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
              Statement stm = c.createStatement();
              String sql = "Insert into cars values(?,?,?,?,?)";
              PreparedStatement pstmt = c.prepareStatement(sql);
-             pstmt.setInt (1,Car_Id);
+             //pstmt.setInt (1,Car_Id);
              pstmt.setString (2,Model);
              pstmt.setString (3,Make);
              pstmt.setString (4,Status);
              pstmt.setInt (5,Fee_Per_Day);
              
-             
+           
              
                 pstmt.execute();
 
-           
-
              c.close();
+             
+             JOptionPane.showMessageDialog(this,"Car Has Been Added!");
 
          } catch (Exception e){
              System.out.println(e.getMessage());
