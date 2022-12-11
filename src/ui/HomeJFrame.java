@@ -1,12 +1,17 @@
 
 package ui;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author madhulikadekate
  */
 public class HomeJFrame extends javax.swing.JFrame {
-
+    Process pr=null;
+    String path=null;
     /**
      * Creates new form HomeJFrame
      */
@@ -36,11 +41,15 @@ public class HomeJFrame extends javax.swing.JFrame {
         rtnBtn = new javax.swing.JButton();
         repBtn = new javax.swing.JButton();
         cleanBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        listBtn.setBackground(new java.awt.Color(204, 204, 255));
+        listBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         listBtn.setText("Customer List");
+        listBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         listBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBtnActionPerformed(evt);
@@ -48,44 +57,60 @@ public class HomeJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(listBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 159, 32));
 
+        onBtn.setBackground(new java.awt.Color(204, 204, 255));
+        onBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         onBtn.setText("On Going Service");
+        onBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         onBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 onBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(onBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 0, 159, 32));
+        getContentPane().add(onBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 159, 32));
 
+        hisBtn.setBackground(new java.awt.Color(204, 204, 255));
+        hisBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         hisBtn.setText("Service History");
+        hisBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         hisBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hisBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(hisBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 159, 32));
+        getContentPane().add(hisBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 159, 32));
 
+        nxtBtn.setBackground(new java.awt.Color(204, 204, 255));
+        nxtBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         nxtBtn.setText("Next Service");
+        nxtBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         nxtBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nxtBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(nxtBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 0, 159, 32));
+        getContentPane().add(nxtBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 159, 32));
 
+        upBtn.setBackground(new java.awt.Color(204, 204, 255));
+        upBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         upBtn.setText("Backup");
+        upBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         upBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 upBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(upBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 159, 32));
+        getContentPane().add(upBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 159, 32));
 
-        serLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        serLab.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
         serLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         serLab.setText("Car Servicing Center");
-        getContentPane().add(serLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, 819, 37));
+        getContentPane().add(serLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 819, 60));
 
+        custBtn.setBackground(new java.awt.Color(204, 204, 255));
+        custBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         custBtn.setText("Customer");
+        custBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        custBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         custBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 custBtnActionPerformed(evt);
@@ -93,7 +118,11 @@ public class HomeJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(custBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 150, 222, 32));
 
+        vhBtn.setBackground(new java.awt.Color(204, 204, 255));
+        vhBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         vhBtn.setText("Vehicle");
+        vhBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        vhBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         vhBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vhBtnActionPerformed(evt);
@@ -101,7 +130,11 @@ public class HomeJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(vhBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 209, 222, 32));
 
+        addBtn.setBackground(new java.awt.Color(204, 204, 255));
+        addBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         addBtn.setText("Add to Service");
+        addBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        addBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
@@ -109,7 +142,11 @@ public class HomeJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 267, 222, 32));
 
+        resultBtn.setBackground(new java.awt.Color(204, 204, 255));
+        resultBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         resultBtn.setText("Service Result");
+        resultBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        resultBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         resultBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resultBtnActionPerformed(evt);
@@ -117,7 +154,11 @@ public class HomeJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(resultBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 325, 222, 32));
 
+        rtnBtn.setBackground(new java.awt.Color(204, 204, 255));
+        rtnBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         rtnBtn.setText("Vehicle Return");
+        rtnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        rtnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         rtnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rtnBtnActionPerformed(evt);
@@ -125,7 +166,11 @@ public class HomeJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(rtnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 383, 222, 32));
 
+        repBtn.setBackground(new java.awt.Color(204, 204, 255));
+        repBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         repBtn.setText("Repair (W)");
+        repBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        repBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         repBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 repBtnActionPerformed(evt);
@@ -133,13 +178,20 @@ public class HomeJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(repBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 441, 222, 32));
 
+        cleanBtn.setBackground(new java.awt.Color(204, 204, 255));
+        cleanBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         cleanBtn.setText("Cleaning (W)");
+        cleanBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        cleanBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cleanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cleanBtnActionPerformed(evt);
             }
         });
         getContentPane().add(cleanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 499, 222, 32));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/madhulikadekate/Desktop/car-1.jpg")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-310, -10, 1190, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,7 +288,33 @@ public class HomeJFrame extends javax.swing.JFrame {
         this.hide();
         Cleaning.setVisible(true);
     }//GEN-LAST:event_cleanBtnActionPerformed
-
+     private void backup()
+    {
+        
+        String date=new SimpleDateFormat("yyy-MM-dd").format(new Date());
+        path="G:\\";
+         path = path + "_" + date + ".sql";
+        try {
+            Runtime run= Runtime.getRuntime();
+            pr=run.exec("C://wamp64//bin//mysql//mysql5.7.21//bin//mysqldump.exe -uroot  --add-drop-database -B computer_shop -r"+ path);
+            
+            int processComplete= pr.waitFor();
+            if(processComplete==0)
+            {
+           // JOptionPane.showMessageDialog(rootPane, "Backup Success");
+            }
+            else
+            {
+            JOptionPane.showMessageDialog(rootPane, "Fail");
+            }
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -277,6 +355,7 @@ public class HomeJFrame extends javax.swing.JFrame {
     private javax.swing.JButton cleanBtn;
     private javax.swing.JButton custBtn;
     private javax.swing.JButton hisBtn;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton listBtn;
     private javax.swing.JButton nxtBtn;
     private javax.swing.JButton onBtn;
