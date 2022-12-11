@@ -4,6 +4,21 @@
  */
 package ui;
 
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author tanvikakde
@@ -15,7 +30,48 @@ public class RentJFrame extends javax.swing.JFrame {
      */
     public RentJFrame() {
         initComponents();
+        
+        jDateChooser_Rent.setDateFormatString("yyyy-MM-dd");
+        jDateChooser_Return.setDateFormatString("yyyy-MM-dd");
+        
+        Update_Table();
+        LoadCar_iD();
+        autoID();
     }
+   
+         public Void LoadCar_iD()
+      {
+       try{
+       
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+        PreparedStatement pstmt = c.prepareStatement("SELECT * FROM CARS WHERE STATUS='Available'");
+        ResultSet rs = pstmt.executeQuery();
+        jComboBox_Rent.removeAllItems();
+        
+        
+        while(rs.next())
+        {
+                jComboBox_Rent.addItem(rs.getString(2));
+        
+        }        
+       
+          
+   
+    }   catch (ClassNotFoundException ex) {
+            Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    
+       
+      }
+//    
+//    Public void LoadCategory() 
+//    {
+//         
+//    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,35 +82,52 @@ public class RentJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        txtCustomer_Id = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableRent = new javax.swing.JTable();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtFirst_Name = new javax.swing.JTextField();
+        txtPrice = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel5 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jLabel6 = new javax.swing.JLabel();
+        txtLast_Name = new javax.swing.JTextField();
+        lblFirstName = new javax.swing.JLabel();
+        jComboBox_PickUp = new javax.swing.JComboBox<>();
+        lblLastName = new javax.swing.JLabel();
+        jComboBox_Drop = new javax.swing.JComboBox<>();
+        txtRentDate = new javax.swing.JLabel();
+        jDateChooser_Return = new com.toedter.calendar.JDateChooser();
+        txtReturnDate = new javax.swing.JLabel();
+        jDateChooser_Rent = new com.toedter.calendar.JDateChooser();
+        lblPickUp = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        lblCarId = new javax.swing.JLabel();
+        jComboBox_Rent = new javax.swing.JComboBox<>();
+        lblRentId = new javax.swing.JLabel();
+        txtRentId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton2.setText("Clear");
 
         jLabel8.setText("Price:");
 
         jButton3.setText("Back");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        txtCustomer_Id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCustomer_IdActionPerformed(evt);
+            }
+        });
+        txtCustomer_Id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCustomer_IdKeyPressed(evt);
+            }
+        });
 
         jTableRent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,28 +139,62 @@ public class RentJFrame extends javax.swing.JFrame {
             new String [] {
                 "Car Id", "Model", "Make", "Status", "Price"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTableRent);
 
         jLabel1.setText("Customer Id:");
 
-        jLabel2.setText("First Name:");
+        txtLast_Name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtLast_NameKeyReleased(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Roxbury", "Jamaica Plain", "Mission Park", "Back Bay" }));
+        lblFirstName.setText("First Name:");
 
-        jLabel3.setText("Last Name:");
+        jComboBox_PickUp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Roxbury", "Jamaica Plain", "Mission Park", "Back Bay" }));
+        jComboBox_PickUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_PickUpActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Roxbury", "Jamaica Plain", "Mission Park", "Back Bay" }));
+        lblLastName.setText("Last Name:");
 
-        jLabel4.setText("Rent Date:");
+        jComboBox_Drop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Roxbury", "Jamaica Plain", "Mission Park", "Back Bay" }));
 
-        jLabel5.setText("Return Date:");
+        txtRentDate.setText("Rent Date:");
 
-        jLabel6.setText("Pick Up:");
+        txtReturnDate.setText("Return Date:");
+
+        lblPickUp.setText("Pick Up:");
 
         jButton1.setText("Rent");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Drop:");
+
+        lblCarId.setText("Car Id:");
+
+        jComboBox_Rent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_RentActionPerformed(evt);
+            }
+        });
+
+        lblRentId.setText("Rent_Id:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,55 +204,67 @@ public class RentJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(78, 78, 78)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(118, 118, 118)
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel1)))
+                                .addGap(46, 46, 46)
+                                .addComponent(jButton3))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtRentDate)
+                                        .addComponent(lblPickUp, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jComboBox_PickUp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jDateChooser_Rent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblCarId)
+                                        .addComponent(lblFirstName))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jComboBox_Rent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtFirst_Name)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox_Drop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblRentId)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtReturnDate)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDateChooser_Return, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblLastName)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtLast_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtRentId, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(48, 48, 48)
+                                                .addComponent(jLabel1)
+                                                .addGap(4, 4, 4)
+                                                .addComponent(txtCustomer_Id, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)))
+                                        .addGap(227, 227, 227)))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -153,44 +272,42 @@ public class RentJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCarId)
+                    .addComponent(jComboBox_Rent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRentId)
+                    .addComponent(txtRentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCustomer_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFirstName)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFirst_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblLastName)
+                        .addComponent(txtLast_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtRentDate)
+                        .addComponent(jDateChooser_Rent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtReturnDate)
+                        .addComponent(jDateChooser_Return, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox_PickUp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPickUp)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_Drop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addGap(23, 23, 23))
         );
@@ -198,9 +315,222 @@ public class RentJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    public void autoID() {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            Statement s = c.createStatement();
+
+            ResultSet rs = s.executeQuery("SELECT MAX(RENT_ID) FROM RENT");
+            rs.next();
+            rs.getString("MAX(RENT_ID)");
+
+            if (rs.getString("MAX(RENT_ID)") == null) {
+                txtRentId.setText("C0001");
+            } else {
+                long id = Long.parseLong(rs.getString("MAX(RENT_ID)").substring(2, rs.getString("MAX(RENT_ID)").length()));
+                id++;
+
+                txtRentId.setText("C0" + String.format("%03d", id));
+
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+    }
+    
+       
+    private void txtCustomer_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustomer_IdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCustomer_IdActionPerformed
+
+    private void txtLast_NameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLast_NameKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtLast_NameKeyReleased
+
+    private void txtCustomer_IdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomer_IdKeyPressed
+        // TODO add your handling code here:
+        
+       if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+       {
+           String Customer_Id = txtCustomer_Id.getText();
+                 
+       try{
+         
+            Class.forName("com.mysql.cj.jdbc.Driver");
+               Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+               
+               PreparedStatement pstmt2 = c.prepareStatement("SELECT * FROM CUSTOMERS WHERE CUSTOMER_ID = ?");
+               pstmt2.setString(1, Customer_Id);
+               ResultSet rs = pstmt2.executeQuery();
+               
+               
+                 if(rs.next() == false)
+                 {
+                   JOptionPane.showMessageDialog(this, "Customer Id Not Found.");
+                 }
+                 else
+                 {
+                   String First_Name = rs.getString("First_Name");
+                   txtFirst_Name.setText(First_Name.trim());
+                   
+                  String Last_Name = rs.getString("Last_Name");
+                   txtLast_Name.setText(Last_Name.trim());
+                 }
+       
+       }   catch (ClassNotFoundException ex) {
+               Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (SQLException ex) {
+               Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
+        
+        
+        
+    }//GEN-LAST:event_txtCustomer_IdKeyPressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+                
+        String Rent_Id = txtRentId.getText();
+        String Car_Id = jComboBox_Rent.getSelectedItem().toString();
+        String Customer_Id = txtCustomer_Id.getText();
+        
+        SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+        String RentDate = Date_Format.format(jDateChooser_Rent.getDate());
+        
+        SimpleDateFormat Date_Format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String ReturnDate = Date_Format1.format(jDateChooser_Return.getDate());
+        
+        String Pick_Up = jComboBox_PickUp.getSelectedItem().toString();
+        String Drop = jComboBox_Drop.getSelectedItem().toString();
+        String Price = txtPrice.getText();
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            
+            PreparedStatement pstmt3 = c.prepareStatement("INSERT INTO CARS(RENT_ID, CAR_ID, CUSTOMER_ID, RENT_DATE, RETURN_DATE, PICKUP_LOCATION, DROP_LOCATION, PRICE) VALUES(?,?,?,?,?,?,?,?)");
+            pstmt3.setString (1,Rent_Id);
+            pstmt3.setString(2, Car_Id);
+            pstmt3.setString(3, Customer_Id);
+            pstmt3.setString(4, RentDate);
+            pstmt3.setString(5, ReturnDate);
+            pstmt3.setString(6, Pick_Up);
+            pstmt3.setString(7, Drop);
+            pstmt3.setString(8, Price );
+            ResultSet rs = pstmt3.executeQuery();
+            autoID();
+            
+            JOptionPane.showMessageDialog(this, "Your Booking Has Been Made!");
+           // populateCARS();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+               
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox_RentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_RentActionPerformed
+        // TODO add your handling code here:
+        
+        String Car_Id = jComboBox_Rent.getSelectedItem().toString();
+       
+         
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+                
+               PreparedStatement pstmt = c.prepareStatement("SELECT * FROM CARS WHERE CAR_ID = ?");
+               pstmt.setString(1, Car_Id);
+               ResultSet rs = pstmt.executeQuery();
+               
+               
+                 if(rs.next() == false)
+                 {
+                   JOptionPane.showMessageDialog(this, "Car Id Not Found.");
+                 }
+                 else
+                 {
+                   String Price = rs.getString("FEE_PER_DAY");
+                   txtPrice.setText(Price.trim());
+                 }
+                
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               
+       
+                
+               
+    }//GEN-LAST:event_jComboBox_RentActionPerformed
+
+    private void jComboBox_PickUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_PickUpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_PickUpActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        UserRentalMenuJFrame al = new UserRentalMenuJFrame();
+        this.hide();
+        al.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+public void Update_Table() {
+
+        int r;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            PreparedStatement pstmt = c.prepareStatement("SELECT * FROM CARS WHERE STATUS='Available'");
+            ResultSet rs = pstmt.executeQuery();
+
+            ResultSetMetaData rd = rs.getMetaData();
+            r = rd.getColumnCount();
+            DefaultTableModel df = (DefaultTableModel) jTableRent.getModel();
+            df.setRowCount(0);
+
+            while (rs.next()) {
+
+                Vector v2 = new Vector();
+
+                for (int i = 1; i <= r; i++) {
+                    v2.add(rs.getString("CAR_ID"));
+                    v2.add(rs.getString("MODEL"));
+                    v2.add(rs.getString("MAKE"));
+                    v2.add(rs.getString("STATUS"));
+                    v2.add(rs.getString("FEE_PER_DAY"));
+
+                }
+                df.addRow(v2);
+
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -235,25 +565,29 @@ public class RentJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JComboBox<String> jComboBox_Drop;
+    private javax.swing.JComboBox<String> jComboBox_PickUp;
+    private javax.swing.JComboBox<String> jComboBox_Rent;
+    private com.toedter.calendar.JDateChooser jDateChooser_Rent;
+    private com.toedter.calendar.JDateChooser jDateChooser_Return;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableRent;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel lblCarId;
+    private javax.swing.JLabel lblFirstName;
+    private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblPickUp;
+    private javax.swing.JLabel lblRentId;
+    private javax.swing.JTextField txtCustomer_Id;
+    private javax.swing.JTextField txtFirst_Name;
+    private javax.swing.JTextField txtLast_Name;
+    private javax.swing.JTextField txtPrice;
+    private javax.swing.JLabel txtRentDate;
+    private javax.swing.JTextField txtRentId;
+    private javax.swing.JLabel txtReturnDate;
     // End of variables declaration//GEN-END:variables
 }
+
