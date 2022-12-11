@@ -4,6 +4,18 @@
  */
 package ui;
 
+import static java.awt.AWTEventMulticaster.add;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.*;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author tanvikakde
@@ -152,9 +164,79 @@ public class UserLoginJFrame extends javax.swing.JFrame {
     private void btnULoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnULoginActionPerformed
         // TODO add your handling code here:
         
-        UserMainMenu umm = new UserMainMenu();
-        this.hide();
-        umm.setVisible(true);
+//        String username = txtAUsername.getText();
+//        String password = jPassword.getText();
+//
+//        if(username.equals("admin") && password.equals("admin123")){
+//                    UserMainMenu umm = new UserMainMenu();
+//                    this.hide();
+//                    umm.setVisible(true);
+//        }
+//        else{
+//            JOptionPane.showMessageDialog(this,"Incorrect Username/Password");
+//        }
+        String User_name = txtUUsername.getText();
+        String Pass_word = String.valueOf(jUPassword.getPassword());
+//        
+       
+//
+        PreparedStatement pstmt = null;
+        Connection c = null;
+
+         try {
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+
+
+                String query = "SELECT * FROM CUSTOMERS WHERE USER_NAME=? AND PASS_WORD=?";
+                pstmt = c.prepareStatement(query);
+
+                pstmt.setString(1, User_name);
+                pstmt.setString(2, Pass_word);
+
+                ResultSet rs = pstmt.executeQuery();
+
+                //check if you have found a valid row
+                if(rs.next()) {
+                      
+                    UserMainMenu umm = new UserMainMenu();
+                    this.hide();
+                    umm.setVisible(true);
+
+                close();
+                //tickets x= new tickets();
+                //''x.setVisible(true);
+                } else {
+                            JOptionPane.showMessageDialog(this,"Username or Password is incorrect");
+                        }
+             } catch(ClassNotFoundException e) {
+
+                            JOptionPane.showMessageDialog(this, e.getMessage());
+
+                           } catch (SQLException ex) {
+            Logger.getLogger(UserLoginJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            try {
+
+                    if(pstmt != null)
+                    pstmt.close();
+
+                } catch (Exception ex) {
+                  ex.printStackTrace();
+            }
+
+      try {
+
+         if(c!= null)
+            c.close();
+
+      } catch (Exception ex) {
+           ex.printStackTrace();
+      }
+}
+        
     }//GEN-LAST:event_btnULoginActionPerformed
 
     private void btnUBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUBackActionPerformed
@@ -210,4 +292,9 @@ public class UserLoginJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblUUsername;
     private javax.swing.JTextField txtUUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void close() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
+
