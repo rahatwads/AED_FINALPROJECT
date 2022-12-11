@@ -27,7 +27,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
      */
     public CarRegistrationJFrame() {
         initComponents();
-        //autoID();
+        autoID();
         Update_Table();
     }
 
@@ -201,9 +201,29 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDisplay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDisplayMouseClicked(evt);
+            }
+        });
+        tblDisplay.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblDisplayKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblDisplayKeyReleased(evt);
             }
         });
         jScrollPane2.setViewportView(tblDisplay);
@@ -242,32 +262,32 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//    public void autoID() {
-//
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
-//            Statement s = c.createStatement();
-//
-//            ResultSet rs = s.executeQuery("SELECT MAX(CAR_ID) FROM CARS");
-//            rs.next();
-//            rs.getString("MAX(CAR_ID)");
-//
-//            if (rs.getString("MAX(CAR_ID)") == null) {
-//                txtCarId.setText("C0001");
-//            } else {
-//                long id = Long.parseLong(rs.getString("MAX(CAR_ID)").substring(2, rs.getString("MAX(CAR_ID)").length()));
-//                id++;
-//
-//                txtCarId.setText("C0" + String.format("%03d", id));
-//
-//            }
-//
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        }
-//
-//    }
+    public void autoID() {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            Statement s = c.createStatement();
+
+            ResultSet rs = s.executeQuery("SELECT MAX(CAR_ID) FROM CARS");
+            rs.next();
+            rs.getString("MAX(CAR_ID)");
+
+            if (rs.getString("MAX(CAR_ID)") == null) {
+                txtCarId.setText("C0001");
+            } else {
+                long id = Long.parseLong(rs.getString("MAX(CAR_ID)").substring(2, rs.getString("MAX(CAR_ID)").length()));
+                id++;
+
+                txtCarId.setText("C0" + String.format("%03d", id));
+
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+    }
 
     public void Update_Table() {
 
@@ -324,20 +344,20 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
 
-            int Car_Id = Integer.parseInt(txtCarId.getText());
+            String Car_Id = txtCarId.getText();
             String Model = txtModel.getText();
             String Make = txtMake.getText();
             String Status = (String) CBStatus.getSelectedItem();
-            int Fee_Per_Day = Integer.parseInt(txtFeePerDay.getText());
+            String Fee_Per_Day = txtFeePerDay.getText();
 
             Statement stm = c.createStatement();
             //String sql = "Insert into cars values(?,?,?,?,?)";
             PreparedStatement pstmt = c.prepareStatement("INSERT INTO CARS(CAR_ID, MODEL, MAKE, STATUS, FEE_PER_DAY) VALUES(?,?,?,?,?)");
-            pstmt.setInt (1,Car_Id);
+            pstmt.setString (1,Car_Id);
             pstmt.setString(2, Model);
             pstmt.setString(3, Make);
             pstmt.setString(4, Status);
-            pstmt.setInt(5, Fee_Per_Day);
+            pstmt.setString(5, Fee_Per_Day);
      
             pstmt.executeUpdate();
             
@@ -349,7 +369,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
             CBStatus.setSelectedIndex(-1);
             txtFeePerDay.setText("");
             txtModel.requestFocus();
-            //autoID();
+            autoID();
             Update_Table();
 
             c.close();
@@ -364,37 +384,80 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-
+        
+        DefaultTableModel d1 = (DefaultTableModel)tblDisplay.getModel();
+        
+        int selectIndex = tblDisplay.getSelectedRow();
+        
         try {
+            
+            String Car_Id = txtCarId.getText();
+            String Model = txtModel.getText();
+            String Make= txtMake.getText();
+            String Status = CBStatus.getSelectedItem().toString();
+            String Fee_Per_Day = txtFeePerDay.getText();
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
-
-            int Car_Id = Integer.parseInt(txtCarId.getText());
-            String Model = txtModel.getText();
-            String Make = txtMake.getText();
-            String Status = (String) CBStatus.getSelectedItem();
-            int Fee_Per_Day = Integer.parseInt(txtFeePerDay.getText());
-
-            Statement stm = c.createStatement();
-            String sql = "Insert into cars values(?,?,?,?,?)";
-            PreparedStatement pstmt = c.prepareStatement(sql);
-            pstmt.setInt(1, Car_Id);
-            pstmt.setString(2, Model);
-            pstmt.setString(3, Make);
-            pstmt.setString(4, Status);
-            pstmt.setInt(5, Fee_Per_Day);
-
-            pstmt.execute();
-
-            c.close();
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            
+           PreparedStatement pstmt = c.prepareStatement("UPDATE CARS SET MODEL=?, MAKE=?, STATUS=?, FEE_PER_DAY=? WHERE CAR_ID=?");
+            
+           
+            pstmt.setString(1, Model);
+            pstmt.setString(2, Make);
+            pstmt.setString(3, Status);
+            pstmt.setString(4, Fee_Per_Day);
+            pstmt.setString (5,Car_Id);
+            
+            pstmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Details Have Been Updated!");
+            
+            Update_Table(); 
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CarRegistrationJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CarRegistrationJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+           
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        
+        DefaultTableModel d1 = (DefaultTableModel)tblDisplay.getModel();
+        
+        int selectIndex = tblDisplay.getSelectedRow();
+        
+        
+        String Car_Id = d1.getValueAt(selectIndex, 0).toString();
+        
+        int dialogResult = JOptionPane.showConfirmDialog(this,"Are You Sure You Want To Delete This Record?","WARNING",JOptionPane.YES_NO_OPTION);
+        
+        if(dialogResult == JOptionPane.YES_OPTION)
+        {
+           try{
+               Class.forName("com.mysql.cj.jdbc.Driver");
+               Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+               
+               PreparedStatement pstmt = c.prepareStatement("DELETE FROM CARS WHERE CAR_ID=?");
+               
+               pstmt.setString(1, Car_Id);
+               pstmt.executeUpdate();
+               
+               JOptionPane.showMessageDialog(this, "Details Have Been Deleted!");
+               
+               Update_Table();
+               
+              } catch (ClassNotFoundException ex) {
+                  Logger.getLogger(CarRegistrationJFrame.class.getName()).log(Level.SEVERE, null, ex);
+              } catch (SQLException ex) {
+                  Logger.getLogger(CarRegistrationJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+             
+        }
+
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -404,6 +467,32 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         this.hide();
         amm.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void tblDisplayKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDisplayKeyPressed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_tblDisplayKeyPressed
+
+    private void tblDisplayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDisplayKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblDisplayKeyReleased
+
+    private void tblDisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDisplayMouseClicked
+        // TODO add your handling code here:
+        
+        DefaultTableModel d1 = (DefaultTableModel)tblDisplay.getModel();
+        
+        int selectIndex = tblDisplay.getSelectedRow();
+        
+        txtCarId.setText(d1.getValueAt (selectIndex, 0).toString());
+        txtModel.setText(d1.getValueAt (selectIndex, 1).toString());
+        txtMake.setText(d1.getValueAt (selectIndex, 2).toString());
+        CBStatus.setSelectedItem(d1.getValueAt (selectIndex, 3).toString());
+        txtFeePerDay.setText(d1.getValueAt (selectIndex, 4).toString());
+        
+        
+    }//GEN-LAST:event_tblDisplayMouseClicked
 
     /**
      * @param args the command line arguments
