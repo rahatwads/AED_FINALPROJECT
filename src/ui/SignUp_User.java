@@ -226,8 +226,8 @@ public class SignUp_User extends javax.swing.JFrame {
          }catch(Exception e){
                 System.out.println(e);
          }
-        CabBookHomePage userhome = new CabBookHomePage();
-         userhome.show();
+        Login_User userlogin = new Login_User();
+         userlogin.show();
          dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
