@@ -24,58 +24,66 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDob" alignment="1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabel1" alignment="1" min="-2" pref="298" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                  <Component id="btnCreateAccount" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblLastName" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEmailid" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblDob" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblEmailid" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="textAreaAddress" min="-2" pref="253" max="-2" attributes="0"/>
+                                      <Component id="Date_Of_Birth" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <Component id="txtEmailid" min="-2" pref="287" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnCreateAccount" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblConfirmPassword" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCustomerId" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLastName" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPassword" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtEmailid" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtFirstName" alignment="0" pref="135" max="32767" attributes="0"/>
-                                      <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtDob" alignment="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="lblTitle" min="-2" pref="295" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="txtFirstName" min="-2" pref="135" max="-2" attributes="0"/>
+                                      <Component id="txtCustomerId" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtUsername" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                          <Component id="txtLastName" alignment="1" min="-2" pref="135" max="-2" attributes="0"/>
+                                          <Component id="jPassword" max="32767" attributes="0"/>
+                                          <Component id="jPasswordField_Re" pref="136" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblCustomerId" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCustomerId" min="-2" pref="135" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
               </Group>
-              <EmptySpace pref="135" max="32767" attributes="0"/>
+              <EmptySpace pref="260" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -101,25 +109,42 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDob" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDob" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtUsername" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblConfirmPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPasswordField_Re" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="lblDob" min="-2" max="-2" attributes="0"/>
+                  <Component id="Date_Of_Birth" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAddress" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                  <Component id="textAreaAddress" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblEmailid" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtEmailid" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCreateAccount" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -167,30 +192,20 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLastName">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLastNameActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFirstName">
       <Properties>
         <Property name="text" type="java.lang.String" value="FIRST NAME:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDob">
-    </Component>
     <Component class="javax.swing.JLabel" name="lblLastName">
       <Properties>
         <Property name="text" type="java.lang.String" value="LAST NAME:"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTextPane" name="txtpAddress">
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JLabel" name="lblDob">
       <Properties>
         <Property name="text" type="java.lang.String" value="DOB:"/>
@@ -202,6 +217,42 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmailid">
+    </Component>
+    <Component class="java.awt.TextArea" name="textAreaAddress">
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="Date_Of_Birth">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblUsername">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="USERNAME:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtUsername">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsernameActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="PASSWORD:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblConfirmPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CONFIRM PASSWORD:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jPassword">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jPasswordField_Re">
     </Component>
   </SubComponents>
 </Form>

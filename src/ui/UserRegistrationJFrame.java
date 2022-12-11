@@ -4,7 +4,15 @@
  */
 package ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,6 +25,7 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
      */
     public UserRegistrationJFrame() {
         initComponents();
+        autoID();
     }
 
     /**
@@ -37,13 +46,19 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
         lblCustomerId = new javax.swing.JLabel();
         txtLastName = new javax.swing.JTextField();
         lblFirstName = new javax.swing.JLabel();
-        txtDob = new javax.swing.JTextField();
         lblLastName = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtpAddress = new javax.swing.JTextPane();
         lblDob = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
         txtEmailid = new javax.swing.JTextField();
+        textAreaAddress = new java.awt.TextArea();
+        Date_Of_Birth = new com.toedter.calendar.JDateChooser();
+        lblUsername = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
+        lblConfirmPassword = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPassword = new javax.swing.JPasswordField();
+        jPasswordField_Re = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,59 +94,90 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
 
         lblCustomerId.setText("CUSTOMER ID:");
 
+        txtLastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLastNameActionPerformed(evt);
+            }
+        });
+
         lblFirstName.setText("FIRST NAME:");
 
         lblLastName.setText("LAST NAME:");
 
-        jScrollPane1.setViewportView(txtpAddress);
-
         lblDob.setText("DOB:");
 
         lblAddress.setText("ADDRESS:");
+
+        lblUsername.setText("USERNAME:");
+
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsernameActionPerformed(evt);
+            }
+        });
+
+        lblPassword.setText("PASSWORD:");
+
+        lblConfirmPassword.setText("CONFIRM PASSWORD:");
+
+        jLabel1.setText("jLabel1");
+
+        jPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblAddress)
-                                    .addComponent(lblDob, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(21, 21, 21))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFirstName, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblLastName, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblEmailid, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCreateAccount)
-                                .addGap(27, 27, 27)
-                                .addComponent(btnBack))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtEmailid, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                                        .addComponent(txtLastName)
-                                        .addComponent(txtDob))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblCustomerId)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitle)
-                            .addComponent(txtCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(72, 72, 72)
+                                    .addComponent(btnCreateAccount)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(btnBack))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblAddress)
+                                        .addComponent(lblDob)
+                                        .addComponent(lblEmailid))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(textAreaAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Date_Of_Birth, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtEmailid, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblConfirmPassword)
+                                .addComponent(lblUsername)
+                                .addComponent(lblCustomerId)
+                                .addComponent(lblFirstName)
+                                .addComponent(lblLastName)
+                                .addComponent(lblPassword))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(31, 31, 31)
+                                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(28, 28, 28)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jPassword)
+                                            .addComponent(jPasswordField_Re, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))))))))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,34 +198,139 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
                     .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsername)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPassword)
+                    .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblConfirmPassword)
+                    .addComponent(jPasswordField_Re, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblDob)
-                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(Date_Of_Birth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAddress)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(textAreaAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmailid)
                     .addComponent(txtEmailid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreateAccount)
                     .addComponent(btnBack))
-                .addContainerGap())
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void autoID() {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            Statement s = c.createStatement();
+
+            ResultSet rs = s.executeQuery("SELECT MAX(CUSTOMER_ID) FROM CUSTOMERS");
+            rs.next();
+            rs.getString("MAX(CUSTOMER_ID)");
+
+            if (rs.getString("MAX(CUSTOMER_ID)") == null) {
+                txtCustomerId.setText("CU001");
+            } else {
+                long id = Long.parseLong(rs.getString("MAX(CUSTOMER_ID)").substring(2, rs.getString("MAX(CUSTOMER_ID)").length()));
+                id++;
+
+                txtCustomerId.setText("CU" + String.format("%03d", id));
+
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+
+    }
+    
+    
+    
+    private static java.sql.Date convertUtilDateToSqlDate(java.util.Date date){
+        if (date!=null){
+            java.sql.Date sqlDate = new java.sql.Date(date.getDate());
+            return sqlDate;
+        }
+        return null;
+    }
+    
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
         // TODO add your handling code here:
         
-        JOptionPane.showMessageDialog(null, "Your Account Has Been Created, Kindly Login To Continue.");
         
-        MainJFrame al = new MainJFrame();
-        this.hide();
-        al.setVisible(true);
+        try {
+            
+//              String DOB = new SimpleDateFormat("yyyy-MM-dd").format(new Date(request.getParameter("date")));
+
+              
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+
+            String Customer_Id = txtCustomerId.getText();
+            String First_Name = txtFirstName.getText();
+            String Last_Name = txtLastName.getText();
+            String Username = txtUsername.getText();
+            String Pass_word = String.valueOf(jPassword.getPassword());
+            String Confirm_Password = String.valueOf(jPasswordField_Re.getPassword());
+            java.util.Date DOB = Date_Of_Birth.getDate();
+            String Address = textAreaAddress.getText();
+            String Email_Id = txtEmailid.getText();
+
+            Statement stm = c.createStatement();
+            //String sql = "Insert into cars values(?,?,?,?,?)";
+            PreparedStatement pstmt = c.prepareStatement("INSERT INTO CUSTOMERS(CUSTOMER_ID, FIRST_NAME, LAST_NAME, USER_NAME, PASS_WORD, DOB, ADDRESS, EMAIL_ID) VALUES(?,?,?,?,?,?,?,?)");
+            pstmt.setString (1,Customer_Id);
+            pstmt.setString(2, First_Name);
+            pstmt.setString(3, Last_Name);
+            pstmt.setString(4, Username);
+            pstmt.setString(5, Pass_word);
+            pstmt.setDate(6, convertUtilDateToSqlDate(DOB));
+            pstmt.setString(7, Address);
+            pstmt.setString(8, Email_Id);
+     
+            pstmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Your Account Has Been Created, Kindly Login To Continue.");
+            
+            txtCustomerId.setText("");
+            txtFirstName.setText("");
+            txtLastName.setText("");
+            //Date_Of_Birth.setDate("");
+            textAreaAddress.setText("");
+            textAreaAddress.setText("");
+            
+            txtCustomerId.requestFocus();
+            autoID();
+           
+
+            c.close();
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        
+        
+//        MainJFrame al = new MainJFrame();
+//        this.hide();
+//        al.setVisible(true);
     }//GEN-LAST:event_btnCreateAccountActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -197,6 +348,18 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
     private void txtFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFirstNameActionPerformed
+
+    private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLastNameActionPerformed
+
+    private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,21 +397,27 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser Date_Of_Birth;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreateAccount;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPasswordField jPassword;
+    private javax.swing.JPasswordField jPasswordField_Re;
     private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblConfirmPassword;
     private javax.swing.JLabel lblCustomerId;
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblEmailid;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblUsername;
+    private java.awt.TextArea textAreaAddress;
     private javax.swing.JTextField txtCustomerId;
-    private javax.swing.JTextField txtDob;
     private javax.swing.JTextField txtEmailid;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextPane txtpAddress;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
