@@ -1,8 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ui;
+
+import Cab_Booking.CarService;
+import java.awt.Color;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
+
+
+//import static Interface.SelectItem.itemid;
+
+//import java.sql.SQLException;
+
+
 
 /**
  *
@@ -10,12 +27,41 @@ package ui;
  */
 public class CustomerJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CustomerJFrame
-     */
+    Connection con=null;
+    PreparedStatement pst=null;
+    ResultSet rs=null;
+    String sqr;
+    
+   public static String fcid=null;
+   public static String fcname=null;
+   
     public CustomerJFrame() {
         initComponents();
+        
+        con = CarService.connect();
+        autoId();
+        tablelord();
+       // combolord();
+        
+        addBtn.setEnabled(false);
+        dlBtn.setEnabled(false);
+        uptBtn.setEnabled(false);
     }
+    
+    
+    private void clear()
+    {
+//    idTxtfl1.setText("");
+    nameTxtfl.setText("");
+    addTxtarea.setText("");
+    mobileTxtfl.setText("");
+    emailTxtfl.setText("");
+    
+    ((JTextField)date.getDateEditor().getUiComponent()).setText("");
+   
+    }
+    
+       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +72,341 @@ public class CustomerJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        customerLab = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        idsearch = new javax.swing.JTextField();
+        nameTxtfl = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        addTxtarea = new javax.swing.JTextArea();
+        mobileTxtfl = new javax.swing.JTextField();
+        emailTxtfl = new javax.swing.JTextField();
+        addBtn = new javax.swing.JButton();
+        uptBtn = new javax.swing.JButton();
+        listBtn2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        customerTbl = new javax.swing.JTable();
+        idTxtfl1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        dlBtn = new javax.swing.JButton();
+        addvehBtn = new javax.swing.JButton();
+        clearBtn = new javax.swing.JButton();
+        date = new com.toedter.calendar.JDateChooser();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 819, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        customerLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        customerLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customerLab.setText("Customer Management");
+        getContentPane().add(customerLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 819, 37));
+
+        jLabel1.setText("Customer ID :");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 107, 20));
+
+        jLabel2.setText("Customer Name :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 99, 107, -1));
+
+        jLabel3.setText("Address :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 137, 107, -1));
+
+        jLabel4.setText("Phone Number :");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 248, 107, -1));
+
+        jLabel5.setText("Email :");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 289, 107, -1));
+
+        jLabel6.setText("Date :");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 330, 107, -1));
+
+        idsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idsearchActionPerformed(evt);
+            }
+        });
+        idsearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                idsearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(idsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 230, -1));
+
+        nameTxtfl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nameTxtflKeyReleased(evt);
+            }
+        });
+        getContentPane().add(nameTxtfl, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 96, 234, -1));
+
+        addTxtarea.setColumns(20);
+        addTxtarea.setRows(5);
+        jScrollPane1.setViewportView(addTxtarea);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 136, -1, -1));
+        getContentPane().add(mobileTxtfl, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 245, 234, -1));
+        getContentPane().add(emailTxtfl, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 286, 234, -1));
+
+        addBtn.setText("Add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, 159, 32));
+
+        uptBtn.setText("Update");
+        uptBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uptBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(uptBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 159, 32));
+
+        listBtn2.setText("Home");
+        listBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listBtn2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(listBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, 159, 32));
+
+        customerTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Customer ID", "Name", "Address", "Phone Number", "Email ID", "Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        customerTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customerTblMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(customerTbl);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 800, 190));
+        getContentPane().add(idTxtfl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 55, 234, -1));
+
+        jLabel7.setText("Customer ID :");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 58, 107, -1));
+
+        dlBtn.setText("Delete");
+        dlBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(dlBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 159, 32));
+
+        addvehBtn.setText("Add Vehicle");
+        addvehBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addvehBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addvehBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 620, 159, 32));
+
+        clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(clearBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 159, 32));
+        getContentPane().add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 240, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+        String Id=idTxtfl1.getText();
+        String Name=nameTxtfl.getText();
+        String Address=addTxtarea.getText();
+        String Num=mobileTxtfl.getText();
+        String Email=emailTxtfl.getText();
+        String Date=((JTextField)date.getDateEditor().getUiComponent()).getText();
+        
+         try {
+                String q= "INSERT INTO `customer`(`cid`, `c_name`, `c_adress`, `c_ho_num`, `c_mo_num`, `c_email`, `c_date`) VALUES ('"+Id+"','"+Name+"' ,'"+Address+"' ,'"+Num+"' ,'"+Email+"' ,'"+Date+"')";
+                 pst=con.prepareStatement(q);
+                pst.execute(); 
+                JOptionPane.showMessageDialog(rootPane,"Successfully registered");
+                
+                    } 
+                catch (Exception e) 
+                {
+       
+                 JOptionPane.showMessageDialog(rootPane,e);                    
+                } 
+         
+         fcid=idTxtfl1.getText();
+         fcname=nameTxtfl.getText();
+//         lblccid.setText(fcid);
+         idsearch.setText(fcname);
+         
+         clear();
+         autoId();
+         tablelord();
+         addBtn.setEnabled(false);
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void uptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uptBtnActionPerformed
+        // TODO add your handling code here:
+
+        
+        String Id=idTxtfl1.getText();
+        String Name=nameTxtfl.getText();
+        String Address=addTxtarea.getText();
+        String Num=mobileTxtfl.getText();
+        String Email=emailTxtfl.getText();
+        String Date=((JTextField)date.getDateEditor().getUiComponent()).getText();
+        
+         int x=JOptionPane.showConfirmDialog(rootPane, "Do you realy want to update");
+        if(x==0)
+        {
+        try {
+              String squpdate = "UPDATE `customer` SET `cid`='"+Id+"',`c_name`='"+Name+"',`c_adress`='"+Address+"',`c_mo_num`='"+Num+"',`c_email`='"+Email+"',`c_date`='"+Date+"' WHERE cid='"+idTxtfl1.getText()+"'";
+              pst=con.prepareStatement(squpdate);
+                pst.execute();  
+                tablelord();
+                JOptionPane.showMessageDialog(rootPane,"Successfully Updated");
+            } 
+        
+        
+        catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,e);
+            
+                    }
+      
+    
+        }
+        
+         fcid=idTxtfl1.getText();
+         fcname=nameTxtfl.getText();
+//         lblccid.setText(fcid);
+         idsearch.setText(fcname);
+        clear();
+        tablelord();
+        autoId();
+        dlBtn.setEnabled(false);
+        uptBtn.setEnabled(false);
+        
+    }//GEN-LAST:event_uptBtnActionPerformed
+
+    private void listBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtn2ActionPerformed
+        // TODO add your handling code here:
+        HomeJFrame Home = new HomeJFrame();
+        this.hide();
+        Home.setVisible(true);
+    }//GEN-LAST:event_listBtn2ActionPerformed
+
+    private void dlBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlBtnActionPerformed
+        // TODO add your handling code here:
+         int x=JOptionPane.showConfirmDialog(rootPane, "Do you want to delete?");
+        if(x==0)
+        {
+        try {
+                String sql="DELETE FROM customer where cid='"+ idTxtfl1.getText() +"'";
+                pst=con.prepareStatement(sql);
+                pst.execute();
+                
+                tablelord();
+                clear();
+                JOptionPane.showMessageDialog(rootPane,"Successfully Deleted");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,e);
+            }
+        
+        }
+//        lblccid.setText("");
+        idsearch.setText("");
+//        cmbselect.setSelectedIndex(0);
+//        itmname.setText("");
+        dlBtn.setEnabled(false);
+        uptBtn.setEnabled(false);
+    }//GEN-LAST:event_dlBtnActionPerformed
+
+    private void addvehBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addvehBtnActionPerformed
+        // TODO add your handling code here:
+        VehicalJFrame Vehicle=new VehicalJFrame();
+        Vehicle.setVisible(true);
+    }//GEN-LAST:event_addvehBtnActionPerformed
+
+    private void idsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idsearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idsearchActionPerformed
+
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        // TODO add your handling code here:
+          clear();
+        autoId();
+        tablelord();
+//        cmbselect.setSelectedIndex(0);
+//        itmname.setText("");
+//        lblccid.setText("");
+        clearBtn.setText("");
+    }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void customerTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerTblMouseClicked
+        // TODO add your handling code here:
+         DefaultTableModel tmodel=(DefaultTableModel)customerTbl.getModel();
+        int selectrowindex=customerTbl.getSelectedRow();
+        idTxtfl1.setText(tmodel.getValueAt(selectrowindex, 0).toString());
+        nameTxtfl.setText(tmodel.getValueAt(selectrowindex, 1).toString());
+        addTxtarea.setText(tmodel.getValueAt(selectrowindex, 2).toString());
+        mobileTxtfl.setText(tmodel.getValueAt(selectrowindex, 3).toString());
+       emailTxtfl.setText(tmodel.getValueAt(selectrowindex, 4).toString());
+        
+        ((JTextField)date.getDateEditor().getUiComponent()).setText((tmodel.getValueAt(selectrowindex, 5).toString()));
+        
+        
+        idsearch.setText(tmodel.getValueAt(selectrowindex, 0).toString());
+//        txtsearch.setText(tmodel.getValueAt(selectrowindex, 1).toString());
+        
+//         fcid=txtcid.getText();
+         fcname=idsearch.getText();
+        
+        dlBtn.setEnabled(true);
+        uptBtn.setEnabled(true);
+       addBtn.setEnabled(true);
+    }//GEN-LAST:event_customerTblMouseClicked
+
+    private void idsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idsearchKeyReleased
+        // TODO add your handling code here:
+//        lblccid.setText("");
+        try {
+            
+             
+            String parseSql="SELECT `cid` as 'CID', `c_name` as 'Customer Name', `c_adress` as 'Customer Adress', `c_ho_num` 'TP Home', `c_mo_num` as 'TP Mobile', `c_email` as 'Email', `c_date` as 'Register Date' FROM `customer` where c_name Like'%"+idsearch.getText()+"%'";
+            pst=con.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+          customerTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            theader();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_idsearchKeyReleased
+
+    private void nameTxtflKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameTxtflKeyReleased
+        // TODO add your handling code here:
+        addBtn.setEnabled(true);
+    }//GEN-LAST:event_nameTxtflKeyReleased
 
     /**
      * @param args the command line arguments
@@ -78,5 +444,67 @@ public class CustomerJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
+    private javax.swing.JTextArea addTxtarea;
+    private javax.swing.JButton addvehBtn;
+    private javax.swing.JButton clearBtn;
+    private javax.swing.JLabel customerLab;
+    private javax.swing.JTable customerTbl;
+    private com.toedter.calendar.JDateChooser date;
+    private javax.swing.JButton dlBtn;
+    private javax.swing.JTextField emailTxtfl;
+    private javax.swing.JTextField idTxtfl1;
+    private javax.swing.JTextField idsearch;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton listBtn2;
+    private javax.swing.JTextField mobileTxtfl;
+    private javax.swing.JTextField nameTxtfl;
+    private javax.swing.JButton uptBtn;
     // End of variables declaration//GEN-END:variables
+
+    private void autoId() {
+    }
+
+    private void tablelord() {
+       try {
+            String sql="SELECT `cid` as 'CID', `c_name` as 'Customer Name', `c_adress` as 'Customer Adress', `c_ho_num` 'TP Home', `c_mo_num` as 'TP Mobile', `c_email` as 'Email', `c_date` as 'Register Date' FROM `customer`";
+            pst=con.prepareStatement(sql);
+            rs=pst.executeQuery();
+            customerTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+       theader();
+    }
+
+    private void theader() {
+        JTableHeader thead = customerTbl.getTableHeader();
+       thead.setForeground(Color.BLUE);
+    
+       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       
+        TableColumn col1=customerTbl.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(80);
+        TableColumn col2=customerTbl.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(130);
+        TableColumn col3=customerTbl.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(150);
+        TableColumn col4=customerTbl.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(100);
+        TableColumn col5=customerTbl.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(105);
+        TableColumn col6=customerTbl.getColumnModel().getColumn(5);
+        col6.setPreferredWidth(150);
+//        TableColumn col7=tblcustomer.getColumnModel().getColumn(6);
+//        col7.setPreferredWidth(110);
+    }
 }

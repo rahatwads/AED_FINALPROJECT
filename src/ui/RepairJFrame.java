@@ -4,17 +4,36 @@
  */
 package ui;
 
+import Cab_Booking.CarService;
+import java.awt.Color;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author madhulikadekate
  */
 public class RepairJFrame extends javax.swing.JFrame {
+    
+     Connection conn=null;
+    PreparedStatement pst=null;
+    ResultSet rs=null;
+    String sqr;
 
     /**
      * Creates new form RepairJFrame
      */
     public RepairJFrame() {
         initComponents();
+        conn=CarService.connect();
+      //  autoId();
+        tablelord();
     }
 
     /**
@@ -26,21 +45,164 @@ public class RepairJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        vehLab = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        repairTxt = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        repairTbl = new javax.swing.JTable();
+        homeBtn = new javax.swing.JButton();
+        printBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        vehLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        vehLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vehLab.setText("Waiting List for Repair");
+
+        jLabel2.setText("Vehicle Number :");
+
+        repairTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                repairTxtKeyReleased(evt);
+            }
+        });
+
+        repairTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Service ID", "Vehicle Number", "Customer ID", "Vehicle Model", "Name", "Servicing Type"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        repairTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                repairTblMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(repairTbl);
+
+        homeBtn.setText("Home");
+        homeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBtnActionPerformed(evt);
+            }
+        });
+
+        printBtn.setText("Print");
+        printBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(vehLab, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(repairTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(printBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(335, 335, 335))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(vehLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel2))
+                    .addComponent(repairTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(printBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 264, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void repairTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_repairTxtKeyReleased
+        // TODO add your handling code here:
+        try {
+
+            String parseSql="SELECT `sid` as 'SID', `vnumber` as 'Vehicle Number', `model` as 'Model Number', `modelname` as 'Model', `nic` as 'Owner NIC', `oname` as 'Owner Name', `stype` as 'Service Type', `date` as 'Date' FROM `add_to_service` WHERE status ='1' AND stype='Repairing' AND vnumber Like'%"+repairTxt.getText()+"%'";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+            repairTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            theader();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e); 
+        }
+    }//GEN-LAST:event_repairTxtKeyReleased
+
+    private void repairTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_repairTblMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_repairTblMouseClicked
+
+    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
+        // TODO add your handling code here:
+        HomeJFrame Home = new HomeJFrame();
+        this.hide();
+        Home.setVisible(true);
+    }//GEN-LAST:event_homeBtnActionPerformed
+
+    private void printBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printBtnActionPerformed
+        // TODO add your handling code here:
+        int prcount=repairTbl.getRowCount();
+    if(prcount>0)
+    {
+        DefaultTableModel tableModel=(DefaultTableModel)repairTbl.getModel();
+        try {
+           
+//           
+            repairTbl.print();
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }
+    else
+    {
+        JOptionPane.showMessageDialog(rootPane, "Not Details to print");
+    }    
+
+    }//GEN-LAST:event_printBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +240,45 @@ public class RepairJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton homeBtn;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton printBtn;
+    private javax.swing.JTable repairTbl;
+    private javax.swing.JTextField repairTxt;
+    private javax.swing.JLabel vehLab;
     // End of variables declaration//GEN-END:variables
+
+    private void tablelord() {
+        try {
+            String sql="SELECT `sid` as 'SID', `vnumber` as 'Vehicle Number', `model` as 'Model Number', `modelname` as 'Model', `nic` as 'Owner NIC', `oname` as 'Owner Name', `stype` as 'Service Type', `date` as 'Date' FROM `add_to_service` WHERE status ='1' AND stype='Repairing'";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            repairTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            theader();
+        } catch (Exception e) {
+           JOptionPane.showMessageDialog(rootPane, e);
+        }
+       theader();
+    }
+
+    private void theader() {
+        JTableHeader thead = repairTbl.getTableHeader();
+       thead.setForeground(Color.BLUE);
+    
+       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       
+        TableColumn col1=repairTbl.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(100);
+        TableColumn col2=repairTbl.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(130);
+        TableColumn col3=repairTbl.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(170);
+        TableColumn col4=repairTbl.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(100);
+        TableColumn col5=repairTbl.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(125);
+        TableColumn col6=repairTbl.getColumnModel().getColumn(5);
+        col6.setPreferredWidth(150);
+    }
 }

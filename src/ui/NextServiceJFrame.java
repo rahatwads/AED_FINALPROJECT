@@ -4,19 +4,45 @@
  */
 package ui;
 
+import Cab_Booking.CarService;
+import java.awt.Color;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author madhulikadekate
  */
 public class NextServiceJFrame extends javax.swing.JFrame {
+    
+    Connection conn=null;
+    PreparedStatement pst=null;
+    ResultSet rs=null;
+    String sqr;
 
     /**
      * Creates new form NextServiceJFrame
      */
     public NextServiceJFrame() {
         initComponents();
+         conn=CarService.connect();
+      //  autoId();
+        tablelord();
     }
-
+ private static java.sql.Date convertUtilDateToSqlDate(java.util.Date date){
+        if (date!=null){
+            java.sql.Date sqlDate = new java.sql.Date(date.getDate());
+            return sqlDate;
+        }
+        return null;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +52,256 @@ public class NextServiceJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        customerLab = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        NumTxt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        idTxt = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        nxtTbl = new javax.swing.JTable();
+        listBtn2 = new javax.swing.JButton();
+        date = new com.toedter.calendar.JDateChooser();
+        listBtn3 = new javax.swing.JButton();
+        clrBtn = new javax.swing.JButton();
+        prtBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        customerLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        customerLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customerLab.setText("Next Servicing");
+
+        jLabel2.setText("Vehicle Number :");
+
+        NumTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                NumTxtKeyReleased(evt);
+            }
+        });
+
+        jLabel3.setText("Customer ID :");
+
+        idTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTxtActionPerformed(evt);
+            }
+        });
+        idTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                idTxtKeyReleased(evt);
+            }
+        });
+
+        nxtTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Customer ID", "Name", "Address", "Phone Number", "Email ID", "Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        nxtTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nxtTblMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(nxtTbl);
+
+        listBtn2.setText("Home");
+        listBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listBtn2ActionPerformed(evt);
+            }
+        });
+
+        listBtn3.setText("Search");
+        listBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listBtn3ActionPerformed(evt);
+            }
+        });
+
+        clrBtn.setText("Clear");
+        clrBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clrBtnActionPerformed(evt);
+            }
+        });
+
+        prtBtn.setText("Print");
+        prtBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prtBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(listBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerLab, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(listBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(10, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(217, 217, 217))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(customerLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(listBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NumTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumTxtKeyReleased
+        // TODO add your handling code here:
+         try {
+
+            String parseSql="SELECT DISTINCT customer.cid as 'Customer ID',v_number as 'Vehicle Number', `c_name` as 'Customer Name', `c_adress` as 'Address', `c_ho_num` as 'TPN Home', `c_mo_num` as 'TPN Mobile', `c_email` as 'Email',ns_date as 'Date' from customer inner join next_service where customer.cid=next_service.cid AND ns_date=Home.date AND v_number = NumTxt.getText()";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+            nxtTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            theader();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_NumTxtKeyReleased
+
+    private void idTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idTxtActionPerformed
+
+    private void idTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idTxtKeyReleased
+        // TODO add your handling code here:
+           try {
+
+            String parseSql="SELECT DISTINCT customer.cid as 'Customer ID',v_number as 'Vehicle Number', `c_name` as 'Customer Name', `c_adress` as 'Address', `c_ho_num` as 'TPN Home', `c_mo_num` as 'TPN Mobile', `c_email` as 'Email',ns_date as 'Date' from customer inner join next_service where customer.cid=next_service.cid AND ns_date= Home.date AND cid = idTxt.getText()";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+            nxtTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            theader();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_idTxtKeyReleased
+
+    private void nxtTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nxtTblMouseClicked
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_nxtTblMouseClicked
+
+    private void listBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtn2ActionPerformed
+        // TODO add your handling code here:
+        HomeJFrame Home = new HomeJFrame();
+        this.hide();
+        Home.setVisible(true);
+    }//GEN-LAST:event_listBtn2ActionPerformed
+
+    private void listBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtn3ActionPerformed
+        // TODO add your handling code here:
+//         java.util.Date DOB = date.getDate().getText();
+        try {
+            String sql="SELECT DISTINCT customer.cid as 'Customer ID',v_number as 'Vehicle Number', `c_name` as 'Customer Name', `c_adress` as 'Address', `c_ho_num` as 'TPN Home', `c_mo_num` as 'TPN Mobile', `c_email` as 'Email',ns_date as 'Date' from customer inner join next_service where customer.cid=next_service.cid AND ns_date='"+date+"'";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            nxtTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            theader();
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_listBtn3ActionPerformed
+
+    private void clrBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clrBtnActionPerformed
+        // TODO add your handling code here:
+         idTxt.setText("");
+        NumTxt.setText("");
+       
+     tablelord();
+    }//GEN-LAST:event_clrBtnActionPerformed
+
+    private void prtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prtBtnActionPerformed
+        // TODO add your handling code here:
+        int prcount=nxtTbl.getRowCount();
+    if(prcount>0)
+    {
+        DefaultTableModel tableModel=(DefaultTableModel)nxtTbl.getModel();
+        try {
+            // HashMap<String, Object> para=new HashMap<>();
+            // para.put("tittle","Sale Report");
+            // TableModelData();
+//             JasperPrint jasperPrint = null;
+//             JasperCompileManager.compileReportToFile("C:\\Users\\ccs\\Documents\\NetBeansProjects\\ComputerService\\src\\report\\allService.jrxml");
+//             jasperPrint = JasperFillManager.fillReport("C:\\Users\\ccs\\Documents\\NetBeansProjects\\ComputerService\\src\\report\\allService.jasper", null,
+//             new JRTableModelDataSource(tableModel));
+//             JasperViewer.viewReport(jasperPrint, false);
+            nxtTbl.print();
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }
+    else
+    {
+        JOptionPane.showMessageDialog(rootPane, "Not Details to print");
+    }    
+    }//GEN-LAST:event_prtBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +339,51 @@ public class NextServiceJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField NumTxt;
+    private javax.swing.JButton clrBtn;
+    private javax.swing.JLabel customerLab;
+    private com.toedter.calendar.JDateChooser date;
+    private javax.swing.JTextField idTxt;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton listBtn2;
+    private javax.swing.JButton listBtn3;
+    private javax.swing.JTable nxtTbl;
+    private javax.swing.JButton prtBtn;
     // End of variables declaration//GEN-END:variables
+
+    private void tablelord() {
+        try {
+            String sql="SELECT DISTINCT customer.cid as 'Customer ID',v_number as 'Vehicle Number', `c_name` as 'Customer Name', `c_adress` as 'Address', `c_ho_num` as 'TPN Home', `c_mo_num` as 'TPN Mobile', `c_email` as 'Email',ns_date as 'Date' from customer inner join next_service where customer.cid=next_service.cid AND ns_date Home.date";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            nxtTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+       theader();
+    }
+
+    private void theader() {
+        JTableHeader thead = nxtTbl.getTableHeader();
+       thead.setForeground(Color.BLUE);
+    
+       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       
+        TableColumn col1=nxtTbl.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(120);
+        TableColumn col2=nxtTbl.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(120);
+        TableColumn col3=nxtTbl.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(120);
+        TableColumn col4=nxtTbl.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(120);
+        TableColumn col5=nxtTbl.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(120);
+        TableColumn col6=nxtTbl.getColumnModel().getColumn(5);
+        col6.setPreferredWidth(120);
+        
+    }
 }

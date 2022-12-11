@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ui;
 
 /**
@@ -41,6 +38,7 @@ public class HomeJFrame extends javax.swing.JFrame {
         cleanBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         listBtn.setText("Customer List");
         listBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -48,6 +46,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 listBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(listBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 159, 32));
 
         onBtn.setText("On Going Service");
         onBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +54,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 onBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(onBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 0, 159, 32));
 
         hisBtn.setText("Service History");
         hisBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +62,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 hisBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(hisBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 159, 32));
 
         nxtBtn.setText("Next Service");
         nxtBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +70,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 nxtBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(nxtBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 0, 159, 32));
 
         upBtn.setText("Backup");
         upBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -76,10 +78,12 @@ public class HomeJFrame extends javax.swing.JFrame {
                 upBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(upBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 159, 32));
 
         serLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         serLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         serLab.setText("Car Servicing Center");
+        getContentPane().add(serLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, 819, 37));
 
         custBtn.setText("Customer");
         custBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -87,13 +91,15 @@ public class HomeJFrame extends javax.swing.JFrame {
                 custBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(custBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 150, 222, 32));
 
-        vhBtn.setText("Vehical");
+        vhBtn.setText("Vehicle");
         vhBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vhBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(vhBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 209, 222, 32));
 
         addBtn.setText("Add to Service");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +107,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 addBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 267, 222, 32));
 
         resultBtn.setText("Service Result");
         resultBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -108,13 +115,15 @@ public class HomeJFrame extends javax.swing.JFrame {
                 resultBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(resultBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 325, 222, 32));
 
-        rtnBtn.setText("Vehical Return");
+        rtnBtn.setText("Vehicle Return");
         rtnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rtnBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(rtnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 383, 222, 32));
 
         repBtn.setText("Repair (W)");
         repBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -122,6 +131,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 repBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(repBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 441, 222, 32));
 
         cleanBtn.setText("Cleaning (W)");
         cleanBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -129,64 +139,7 @@ public class HomeJFrame extends javax.swing.JFrame {
                 cleanBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(serLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(listBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(onBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hisBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nxtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(upBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vhBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(custBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resultBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rtnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(repBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cleanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(294, 294, 294))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(listBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(onBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hisBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nxtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(upBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(serLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(custBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(vhBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(resultBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(rtnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(repBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(cleanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {addBtn, cleanBtn, custBtn, repBtn, resultBtn, rtnBtn, vhBtn});
+        getContentPane().add(cleanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 499, 222, 32));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,94 +147,94 @@ public class HomeJFrame extends javax.swing.JFrame {
     private void nxtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nxtBtnActionPerformed
         // TODO add your handling code here:
         NextServiceJFrame NextService = new NextServiceJFrame();
-        NextService.show();
-        dispose();
+        this.hide();
+         NextService.setVisible(true);
                   
     }//GEN-LAST:event_nxtBtnActionPerformed
 
     private void custBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custBtnActionPerformed
         // TODO add your handling code here:
-         CustomerJFrame Customer = new CustomerJFrame();
-         Customer.show();
-         dispose();
-        
+        CustomerJFrame Customer = new CustomerJFrame();
+        this.hide();
+         Customer.setVisible(true);
+     
         
     }//GEN-LAST:event_custBtnActionPerformed
 
     private void vhBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vhBtnActionPerformed
         // TODO add your handling code here:
-        VehicalJFrame Vehical = new VehicalJFrame();
-        Vehical.show();
-        dispose();
+        VehicalJFrame Vehicle = new VehicalJFrame();
+       this.hide();
+         Vehicle.setVisible(true);
         
     }//GEN-LAST:event_vhBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
         AddServiceJFrame Add = new AddServiceJFrame();
-        Add.show();
-        dispose();
+        this.hide();
+         Add.setVisible(true);
         
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void rtnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rtnBtnActionPerformed
         // TODO add your handling code here:
         VehicalReturnJFrame Return = new  VehicalReturnJFrame();
-        Return.show();
-        dispose();
+       this.hide();
+        Return.setVisible(true);
         
     }//GEN-LAST:event_rtnBtnActionPerformed
 
     private void listBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtnActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
         CustomerListJFrame List = new CustomerListJFrame();
-        List.show();
-        dispose();
+     this.hide();
+         List.setVisible(true);
     }//GEN-LAST:event_listBtnActionPerformed
 
     private void onBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onBtnActionPerformed
         // TODO add your handling code here:
         OnServiceJFrame OnService = new OnServiceJFrame();
-        OnService.show();
-        dispose();
+        this.hide();
+        OnService.setVisible(true);
     }//GEN-LAST:event_onBtnActionPerformed
 
     private void hisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hisBtnActionPerformed
         // TODO add your handling code here:
         ServiceHistoryJFrame History = new ServiceHistoryJFrame();
-        History.show();
-        dispose();
+       this.hide();
+       History.setVisible(true);
             
     }//GEN-LAST:event_hisBtnActionPerformed
 
     private void upBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upBtnActionPerformed
         // TODO add your handling code here:
         BackupJFrame Backup = new BackupJFrame();
-        Backup.show();
-        dispose();
+        this.hide();
+        Backup.setVisible(true);
                    
     }//GEN-LAST:event_upBtnActionPerformed
 
     private void resultBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultBtnActionPerformed
         // TODO add your handling code here:
         ServiceResultJFrame Result = new ServiceResultJFrame();
-        Result.show();
-        dispose();
+       this.hide();
+        Result.setVisible(true);
         
     }//GEN-LAST:event_resultBtnActionPerformed
 
     private void repBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repBtnActionPerformed
         // TODO add your handling code here:
         RepairJFrame Repair = new RepairJFrame();
-        Repair.show();
-        dispose();
+        this.hide();
+        Repair.setVisible(true);
     }//GEN-LAST:event_repBtnActionPerformed
 
     private void cleanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanBtnActionPerformed
         // TODO add your handling code here:
         CleaningJFrame Cleaning = new CleaningJFrame();
-        Cleaning.show();
-        dispose();
+        this.hide();
+        Cleaning.setVisible(true);
     }//GEN-LAST:event_cleanBtnActionPerformed
 
     /**

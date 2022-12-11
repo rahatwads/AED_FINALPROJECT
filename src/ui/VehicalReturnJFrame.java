@@ -4,18 +4,44 @@
  */
 package ui;
 
+import Cab_Booking.CarService;
+import java.awt.Color;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author madhulikadekate
  */
 public class VehicalReturnJFrame extends javax.swing.JFrame {
-
+  Connection conn=null;
+    PreparedStatement pst=null;
+    ResultSet rs=null;
+    String sqr;
     /**
+     * 
      * Creates new form VehicalReturnJFrame
      */
+    
+   
+    
     public VehicalReturnJFrame() {
         initComponents();
+         conn=CarService.connect();
+      //  autoId();
+        tablelord();
+        combolord();
     }
+    
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,22 +52,390 @@ public class VehicalReturnJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        vehLab = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        NumTxt = new javax.swing.JTextField();
+        idTxt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        compTbl = new javax.swing.JTable();
+        homeBtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        IdTxt = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        date = new com.toedter.calendar.JDateChooser();
+        numTxt = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Billtxt = new javax.swing.JTextArea();
+        homeBtn1 = new javax.swing.JButton();
+        homeBtn2 = new javax.swing.JButton();
+        homeBtn3 = new javax.swing.JButton();
+        returnCBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        vehLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        vehLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vehLab.setText("Service Complete Vehicles");
+
+        jLabel2.setText("Vehicle Number :");
+
+        NumTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                NumTxtKeyReleased(evt);
+            }
+        });
+
+        idTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTxtActionPerformed(evt);
+            }
+        });
+        idTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                idTxtKeyReleased(evt);
+            }
+        });
+
+        jLabel3.setText("Customer ID :");
+
+        compTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Service ID", "Vehicle Number", "Customer ID", "Vehicle Model", "Name", "Result", "Date", "Charges"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        compTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                compTblMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(compTbl);
+
+        homeBtn.setText("Home");
+        homeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Vehicle Number :");
+
+        jLabel7.setText("Service ID :");
+
+        jLabel6.setText("Next Date :");
+
+        numTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        numTxt.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                numTxtPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+
+        Billtxt.setColumns(20);
+        Billtxt.setRows(5);
+        jScrollPane1.setViewportView(Billtxt);
+
+        homeBtn1.setText("Clear");
+        homeBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBtn1ActionPerformed(evt);
+            }
+        });
+
+        homeBtn2.setText("Print");
+        homeBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBtn2ActionPerformed(evt);
+            }
+        });
+
+        homeBtn3.setText("Back to Services");
+        homeBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBtn3ActionPerformed(evt);
+            }
+        });
+
+        returnCBtn.setText("Return to Customer");
+        returnCBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnCBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(vehLab, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(numTxt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(IdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(86, 86, 86)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(13, 13, 13))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(homeBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(homeBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(homeBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(returnCBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(vehLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(IdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(numTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(homeBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homeBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homeBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(returnCBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void NumTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumTxtKeyReleased
+        // TODO add your handling code here:
+        try {
+
+            String parseSql="SELECT `sid` as 'Service ID', `v_number` as 'Vehicle Number', `model` as 'Model', `cid` as 'NIC', `cname` as 'Name', `service` as 'Service', `item_replace` as 'Items Replace', `result` as 'Result', `other` as 'Other', `date` as 'Date', `charge` as 'Charge' FROM `service_complete` WHERE status='0' and v_number Like'%"+NumTxt.getText()+"%'";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+            compTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_NumTxtKeyReleased
+
+    private void idTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idTxtKeyReleased
+        // TODO add your handling code here:
+        try {
+
+            String parseSql="SELECT `sid` as 'Service ID', `v_number` as 'Vehicle Number', `model` as 'Model', `cid` as 'NIC', `cname` as 'Name', `service` as 'Service', `item_replace` as 'Items Replace', `result` as 'Result', `other` as 'Other', `date` as 'Date', `charge` as 'Charge' FROM `service_complete` WHERE status='0' and cid Like'%"+idTxt.getText()+"%'";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+            compTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+
+    }//GEN-LAST:event_idTxtKeyReleased
+
+    private void idTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idTxtActionPerformed
+
+       public String falt;
+    public String rdate;
+    String idr;
+    String num;
+    String idc;
+    String model;
+    String name;
+    String result;
+//    String date;
+    String charge; 
+    
+    private void compTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compTblMouseClicked
+        // TODO add your handling code here:
+        
+         DefaultTableModel tmodel=(DefaultTableModel)compTbl.getModel();
+        int selectrowindex=compTbl.getSelectedRow();
+        
+        IdTxt.setText(tmodel.getValueAt(selectrowindex, 0).toString());
+        NumTxt.setText(tmodel.getValueAt(selectrowindex, 2).toString());
+        numTxt.setSelectedItem(tmodel.getValueAt(selectrowindex, 1).toString());
+        
+        idr =(tmodel.getValueAt(selectrowindex, 0).toString());
+        num =(tmodel.getValueAt(selectrowindex, 1).toString());
+        idc =(tmodel.getValueAt(selectrowindex, 2).toString());
+        model =(tmodel.getValueAt(selectrowindex, 3).toString());
+        name =(tmodel.getValueAt(selectrowindex, 4).toString());
+        result =(tmodel.getValueAt(selectrowindex, 7).toString());
+//        date=(tmodel.getValueAt(selectrowindex, 9).toString());
+        charge =(tmodel.getValueAt(selectrowindex, 10).toString());
+        
+        
+        
+        
+        Billtxt.setText("");
+        recipt();
+    }//GEN-LAST:event_compTblMouseClicked
+
+    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
+        // TODO add your handling code here:
+        HomeJFrame Home = new HomeJFrame();
+        this.hide();
+        Home.setVisible(true);
+    }//GEN-LAST:event_homeBtnActionPerformed
+
+    private void homeBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn1ActionPerformed
+        // TODO add your handling code here:
+        tablelord();
+        Billtxt.setText("");
+        NumTxt.setText("");
+        idTxt.setText("");
+       // txtsearch.setText("");
+        idTxt.setText("");
+        
+        numTxt.setSelectedIndex(0);
+      //  txtscenteer.setText("");
+//        ((JTextField)date.getDateEditor().getUiComponent()).setText("");
+    }//GEN-LAST:event_homeBtn1ActionPerformed
+
+    private void homeBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn2ActionPerformed
+        // TODO add your handling code here:
+        int x=Billtxt.getText().length();
+        if(x>0)
+        {
+          try {
+            Billtxt.print();
+            Billtxt.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane, "No Data To Print");
+        }
+    }//GEN-LAST:event_homeBtn2ActionPerformed
+
+    private void homeBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeBtn3ActionPerformed
+
+    private void returnCBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnCBtnActionPerformed
+        // TODO add your handling code here:
+        int x=IdTxt.getText().length();
+        int y=((JTextField)date.getDateEditor().getUiComponent()).getText().length();
+        
+        if(x>0)
+        {
+            if(y>0)
+            {
+                nextService();
+                update();
+                tablelord();
+                clear();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(rootPane, "Select Date");
+            }
+        }
+        else{
+        JOptionPane.showMessageDialog(rootPane, "Select Item");
+        }
+        
+    }//GEN-LAST:event_returnCBtnActionPerformed
+
+    private void numTxtPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_numTxtPopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numTxtPopupMenuWillBecomeInvisible
+ 
+    
+    private void update()
+    {
+    try {
+                String squpdate = "UPDATE `service_complete` SET `status`='1' WHERE sid='"+IdTxt.getText()+"'";
+                pst=conn.prepareStatement(squpdate);
+                pst.execute();
+                // tablelord();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+    }
+    
+    
+    
+ 
     /**
      * @param args the command line arguments
      */
@@ -78,5 +472,108 @@ public class VehicalReturnJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea Billtxt;
+    private javax.swing.JTextField IdTxt;
+    private javax.swing.JTextField NumTxt;
+    private javax.swing.JTable compTbl;
+    private com.toedter.calendar.JDateChooser date;
+    private javax.swing.JButton homeBtn;
+    private javax.swing.JButton homeBtn1;
+    private javax.swing.JButton homeBtn2;
+    private javax.swing.JButton homeBtn3;
+    private javax.swing.JTextField idTxt;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> numTxt;
+    private javax.swing.JButton returnCBtn;
+    private javax.swing.JLabel vehLab;
     // End of variables declaration//GEN-END:variables
+
+    private void tablelord() {
+       JTableHeader thead = compTbl.getTableHeader();
+       thead.setForeground(Color.BLUE);
+    
+       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       
+        TableColumn col1=compTbl.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(120);
+        TableColumn col2=compTbl.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(120);
+        TableColumn col3=compTbl.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(120);
+        TableColumn col4=compTbl.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(120);
+        TableColumn col5=compTbl.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(120);
+        TableColumn col6=compTbl.getColumnModel().getColumn(5);
+        col6.setPreferredWidth(120);
+        TableColumn col7=compTbl.getColumnModel().getColumn(6);
+        col7.setPreferredWidth(120);
+        
+         TableColumn col8=compTbl.getColumnModel().getColumn(7);
+        col8.setPreferredWidth(120);
+    }
+
+    private void combolord() {
+        String sq="SELECT v_number from service_complete";
+            try {
+             pst=conn.prepareStatement(sq);
+             rs=pst.executeQuery();
+             while(rs.next())
+             {
+             String name=rs.getString("v_number");
+             numTxt.addItem(name);
+             }
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(rootPane, ex);
+             
+         }
+    }
+
+    private void recipt() {
+        Billtxt.append(" xxxxxxxxxxxxxxxxx \n" +
+            "  No. 82/xxxxxxxxxxxxxxxxxxxxx. \n" +
+            "  0777-xxxxxxxxx / 066 xxxxxxxx  \n" +
+            "  Email: xxxxxxm@yahoo.com  \n" +
+            
+            "\n=================================\n\n" +
+            "Service ID: \t" +idr+ "\n" +
+            "Vehicle Number: " +num+ "\n" +
+            "Model No: \t" +model+ "\n" +
+            "NIC: " +idc+ "\n" +
+            "Result:" +result+ "\n" +
+            "Charge:" +charge+ "\n" +
+//             "Next Service Date:" +((JTextField)date.getDateEditor().getUiComponent()).getText()+ "\n" +
+            
+            "\n=================================\n"+
+              "xxxxxxxxxxxxxxxxxxxxxxxxxxx"+"\n" 
+               
+            
+            );
+    }
+
+    private void clear() {
+        IdTxt.setText("");
+//        lblmodelnum.setText("");
+        combolord();
+     //   txtscenteer.setText("");
+//        ((JTextField)dtdate.getDateEditor().getUiComponent()).setText("");
+    }
+
+    private void nextService() {
+         try {
+//            String date = ((JTextField)date.getDateEditor().getUiComponent()).getText();   
+         String q= "INSERT INTO `next_service`(`v_number`, `ns_date`, cid) VALUES ('"+numTxt.getSelectedItem().toString()+"','"+date+"', '"+idc+"')";
+                 pst=conn.prepareStatement(q);
+                pst.execute(); 
+                // tablelord();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+    }
 }

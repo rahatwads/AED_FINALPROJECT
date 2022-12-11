@@ -4,17 +4,37 @@
  */
 package ui;
 
+import Cab_Booking.CarService;
+import java.awt.Color;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author madhulikadekate
  */
 public class ServiceHistoryJFrame extends javax.swing.JFrame {
+    
+      Connection conn=null;
+    PreparedStatement pst=null;
+    ResultSet rs=null;
+    String sqr;
 
     /**
      * Creates new form ServiceHistoryJFrame
      */
     public ServiceHistoryJFrame() {
         initComponents();
+        
+         conn=CarService.connect();
+      //  autoId();
+        tablelord();
     }
 
     /**
@@ -26,21 +46,230 @@ public class ServiceHistoryJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        serTbl = new javax.swing.JTable();
+        customerLab = new javax.swing.JLabel();
+        listBtn2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        NumTxt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        idTxt = new javax.swing.JTextField();
+        clrBtn = new javax.swing.JButton();
+        prtBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        serTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Service ID", "Vehicle Number", "Customer ID", "Vehicle Model", "Name", "Servicing Type"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        serTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                serTblMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(serTbl);
+
+        customerLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        customerLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        customerLab.setText("Service History");
+
+        listBtn2.setText("Home");
+        listBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listBtn2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Vehicle Number :");
+
+        NumTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                NumTxtKeyReleased(evt);
+            }
+        });
+
+        jLabel3.setText("Customer ID :");
+
+        idTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTxtActionPerformed(evt);
+            }
+        });
+        idTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                idTxtKeyReleased(evt);
+            }
+        });
+
+        clrBtn.setText("Clear");
+        clrBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clrBtnActionPerformed(evt);
+            }
+        });
+
+        prtBtn.setText("Print");
+        prtBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prtBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(listBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(customerLab, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(430, 430, 430)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(customerLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(listBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel2)))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 255, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void serTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_serTblMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_serTblMouseClicked
+
+    private void listBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtn2ActionPerformed
+        // TODO add your handling code here:
+        HomeJFrame Home = new HomeJFrame();
+        this.hide();
+        Home.setVisible(true);
+    }//GEN-LAST:event_listBtn2ActionPerformed
+
+    private void NumTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumTxtKeyReleased
+        // TODO add your handling code here:
+        try {
+
+            String parseSql="SELECT `sid` as 'Service ID', `v_number` as 'Vehicle Number', `model`as 'Model', `cid` as 'NIC', `cname` as 'Client Name', `service` as 'Service Type', `item_replace` as 'Items Replace', `result` as 'Result', `other` as 'Other', `date` as 'Date', `charge` as 'Charge' FROM `service_complete` Where status='1' and v_number = '"+NumTxt.getText()+"'";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+            serTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            theader();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_NumTxtKeyReleased
+
+    private void idTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idTxtActionPerformed
+
+    private void idTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idTxtKeyReleased
+        // TODO add your handling code here:
+        try {
+
+            String parseSql="SELECT `sid` as 'Service ID', `v_number` as 'Vehicle Number', `model`as 'Model', `cid` as 'NIC', `cname` as 'Client Name', `service` as 'Service Type', `item_replace` as 'Items Replace', `result` as 'Result', `other` as 'Other', `date` as 'Date', `charge` as 'Charge' FROM `service_complete` Where status='1' and cid = '"+idTxt.getText()+"'";
+            pst=conn.prepareStatement(parseSql);
+            rs=pst.executeQuery();
+            serTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+           theader();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_idTxtKeyReleased
+
+    private void clrBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clrBtnActionPerformed
+        // TODO add your handling code here:
+         idTxt.setText("");
+        NumTxt.setText("");
+       
+     tablelord();
+    }//GEN-LAST:event_clrBtnActionPerformed
+
+    private void prtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prtBtnActionPerformed
+        // TODO add your handling code here:
+             int prcount=serTbl.getRowCount();
+    if(prcount>0)
+    {
+        DefaultTableModel tableModel=(DefaultTableModel)serTbl.getModel();
+        try {
+            // HashMap<String, Object> para=new HashMap<>();
+            // para.put("tittle","Sale Report");
+            // TableModelData();
+//             JasperPrint jasperPrint = null;
+//             JasperCompileManager.compileReportToFile("C:\\Users\\ccs\\Documents\\NetBeansProjects\\ComputerService\\src\\report\\allService.jrxml");
+//             jasperPrint = JasperFillManager.fillReport("C:\\Users\\ccs\\Documents\\NetBeansProjects\\ComputerService\\src\\report\\allService.jasper", null,
+//             new JRTableModelDataSource(tableModel));
+//             JasperViewer.viewReport(jasperPrint, false);
+            serTbl.print();
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }
+    else
+    {
+        JOptionPane.showMessageDialog(rootPane, "Not Details to print");
+    } 
+    }//GEN-LAST:event_prtBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +307,51 @@ public class ServiceHistoryJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField NumTxt;
+    private javax.swing.JButton clrBtn;
+    private javax.swing.JLabel customerLab;
+    private javax.swing.JTextField idTxt;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton listBtn2;
+    private javax.swing.JButton prtBtn;
+    private javax.swing.JTable serTbl;
     // End of variables declaration//GEN-END:variables
+
+    private void tablelord() {
+    try {
+            String sql="SELECT `sid` as 'Service ID', `v_number` as 'Vehicle Number', `model`as 'Model', `cid` as 'NIC', `cname` as 'Client Name', `service` as 'Service Type', `item_replace` as 'Items Replace', `result` as 'Result', `other` as 'Other', `date` as 'Date', `charge` as 'Charge' FROM `service_complete` Where status='1'";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            serTbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+            
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+       theader();
+}
+
+    private void theader() {
+        JTableHeader thead = serTbl.getTableHeader();
+       thead.setForeground(Color.BLUE);
+    
+       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       
+        TableColumn col1=serTbl.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(120);
+        TableColumn col2=serTbl.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(120);
+        TableColumn col3=serTbl.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(120);
+        TableColumn col4=serTbl.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(120);
+        TableColumn col5=serTbl.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(120);
+        TableColumn col6=serTbl.getColumnModel().getColumn(5);
+        col6.setPreferredWidth(120);
+        
+        
+    }
+    
 }
