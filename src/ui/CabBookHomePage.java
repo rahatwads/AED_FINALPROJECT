@@ -28,7 +28,6 @@ public class CabBookHomePage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -36,8 +35,8 @@ public class CabBookHomePage extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         jMenuItem9.setText("jMenuItem9");
 
@@ -53,15 +52,7 @@ public class CabBookHomePage extends javax.swing.JFrame {
         jMenu1.setText("CUSTOMER");
         jMenu1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
 
-        jMenuItem2.setText("VIEW CUSTOMER");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("UPDATE CUSTOMER");
+        jMenuItem3.setText("VIEW DETAILS");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -113,18 +104,18 @@ public class CabBookHomePage extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("BILL");
-        jMenu4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jMenu5.setText("LOGOUT");
+        jMenu5.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
 
-        jMenuItem10.setText("VIEW BILL");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("LOGOUT");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem10);
+        jMenu5.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -148,10 +139,6 @@ public class CabBookHomePage extends javax.swing.JFrame {
         new ViewIntracityCab().setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       new View__Customer().setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         new UpdateCustomer().setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -168,9 +155,11 @@ public class CabBookHomePage extends javax.swing.JFrame {
         new BookIntracityCabs().setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        new Bill().setVisible(true);
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+         CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
+       CabBookMAinJFram.show();
+       dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,10 +202,9 @@ public class CabBookHomePage extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
