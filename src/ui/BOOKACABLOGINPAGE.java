@@ -33,10 +33,25 @@ public class BOOKACABLOGINPAGE extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAdmin.setText("ADMIN");
+        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminActionPerformed(evt);
+            }
+        });
 
         btnUser.setText("USER");
+        btnUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUserActionPerformed(evt);
+            }
+        });
 
         btnDriver.setText("DRIVER");
+        btnDriver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDriverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,6 +79,24 @@ public class BOOKACABLOGINPAGE extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+        LoginAdmin Loginadmin = new LoginAdmin();
+         Loginadmin.show();
+         dispose();
+    }//GEN-LAST:event_btnAdminActionPerformed
+
+    private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
+        Login_User Loginuser = new Login_User();
+         Loginuser.show();
+         dispose();
+    }//GEN-LAST:event_btnUserActionPerformed
+
+    private void btnDriverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDriverActionPerformed
+        Login_Driver Logindriver = new Login_Driver();
+         Logindriver.show();
+         dispose();
+    }//GEN-LAST:event_btnDriverActionPerformed
 
     /**
      * @param args the command line arguments

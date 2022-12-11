@@ -53,16 +53,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ADMIN"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdminActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnUser">
       <Properties>
         <Property name="text" type="java.lang.String" value="USER"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUserActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnDriver">
       <Properties>
         <Property name="text" type="java.lang.String" value="DRIVER"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDriverActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
