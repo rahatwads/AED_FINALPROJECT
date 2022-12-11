@@ -56,8 +56,10 @@ public class ServiceHistoryJFrame extends javax.swing.JFrame {
         idTxt = new javax.swing.JTextField();
         clrBtn = new javax.swing.JButton();
         prtBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         serTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,26 +87,37 @@ public class ServiceHistoryJFrame extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(serTbl);
 
-        customerLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 183, 800, 190));
+
+        customerLab.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         customerLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         customerLab.setText("Service History");
+        getContentPane().add(customerLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 819, 37));
 
+        listBtn2.setBackground(new java.awt.Color(255, 204, 204));
         listBtn2.setText("Home");
+        listBtn2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         listBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBtn2ActionPerformed(evt);
             }
         });
+        getContentPane().add(listBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, 159, 32));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setText("Vehicle Number :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 145, 107, -1));
 
         NumTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 NumTxtKeyReleased(evt);
             }
         });
+        getContentPane().add(NumTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 142, 234, -1));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel3.setText("Customer ID :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 142, 107, -1));
 
         idTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,79 +129,31 @@ public class ServiceHistoryJFrame extends javax.swing.JFrame {
                 idTxtKeyReleased(evt);
             }
         });
+        getContentPane().add(idTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 139, 234, -1));
 
+        clrBtn.setBackground(new java.awt.Color(255, 204, 204));
         clrBtn.setText("Clear");
+        clrBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         clrBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clrBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(clrBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 398, 159, 32));
 
+        prtBtn.setBackground(new java.awt.Color(255, 204, 204));
         prtBtn.setText("Print");
+        prtBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         prtBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prtBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(prtBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 398, 159, 32));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(listBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerLab, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(430, 430, 430)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(242, 242, 242)
-                .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(customerLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel2)))))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 255, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/cc2.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -311,6 +276,7 @@ public class ServiceHistoryJFrame extends javax.swing.JFrame {
     private javax.swing.JButton clrBtn;
     private javax.swing.JLabel customerLab;
     private javax.swing.JTextField idTxt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
@@ -334,9 +300,9 @@ public class ServiceHistoryJFrame extends javax.swing.JFrame {
 
     private void theader() {
         JTableHeader thead = serTbl.getTableHeader();
-       thead.setForeground(Color.BLUE);
+       thead.setForeground(Color.BLACK);
     
-       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       thead.setFont(new Font("Tahome", Font.BOLD, 12));
        
         TableColumn col1=serTbl.getColumnModel().getColumn(0);
         col1.setPreferredWidth(120);

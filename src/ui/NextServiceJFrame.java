@@ -64,22 +64,30 @@ public class NextServiceJFrame extends javax.swing.JFrame {
         listBtn3 = new javax.swing.JButton();
         clrBtn = new javax.swing.JButton();
         prtBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        customerLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        customerLab.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         customerLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         customerLab.setText("Next Servicing");
+        getContentPane().add(customerLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 819, 37));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setText("Vehicle Number :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 131, 107, -1));
 
         NumTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 NumTxtKeyReleased(evt);
             }
         });
+        getContentPane().add(NumTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 128, 234, -1));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel3.setText("Customer ID :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 131, 107, -1));
 
         idTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +99,7 @@ public class NextServiceJFrame extends javax.swing.JFrame {
                 idTxtKeyReleased(evt);
             }
         });
+        getContentPane().add(idTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 128, 234, -1));
 
         nxtTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,95 +127,52 @@ public class NextServiceJFrame extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(nxtTbl);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 183, 800, 190));
+
+        listBtn2.setBackground(new java.awt.Color(255, 204, 204));
         listBtn2.setText("Home");
+        listBtn2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         listBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBtn2ActionPerformed(evt);
             }
         });
+        getContentPane().add(listBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 55, 159, 32));
+        getContentPane().add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 391, 233, -1));
 
+        listBtn3.setBackground(new java.awt.Color(255, 204, 204));
         listBtn3.setText("Search");
+        listBtn3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         listBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listBtn3ActionPerformed(evt);
             }
         });
+        getContentPane().add(listBtn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 391, 159, 32));
 
+        clrBtn.setBackground(new java.awt.Color(255, 204, 204));
         clrBtn.setText("Clear");
+        clrBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         clrBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clrBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(clrBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 505, 159, 32));
 
+        prtBtn.setBackground(new java.awt.Color(255, 204, 204));
         prtBtn.setText("Print");
+        prtBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         prtBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prtBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(prtBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 505, 159, 32));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(listBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(customerLab, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(listBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(217, 217, 217))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(customerLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(listBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(listBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(148, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/cc2.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -344,6 +310,7 @@ public class NextServiceJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel customerLab;
     private com.toedter.calendar.JDateChooser date;
     private javax.swing.JTextField idTxt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
@@ -368,9 +335,9 @@ public class NextServiceJFrame extends javax.swing.JFrame {
 
     private void theader() {
         JTableHeader thead = nxtTbl.getTableHeader();
-       thead.setForeground(Color.BLUE);
+       thead.setForeground(Color.BLACK);
     
-       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       thead.setFont(new Font("Tahome", Font.BOLD, 12));
        
         TableColumn col1=nxtTbl.getColumnModel().getColumn(0);
         col1.setPreferredWidth(120);

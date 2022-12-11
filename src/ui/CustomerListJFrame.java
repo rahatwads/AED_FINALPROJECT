@@ -56,28 +56,37 @@ public class CustomerListJFrame extends javax.swing.JFrame {
         homeBtn = new javax.swing.JButton();
         prtBtn = new javax.swing.JButton();
         clrBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setText("Vehicle Number :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 128, 107, -1));
 
         VnumTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 VnumTxtKeyReleased(evt);
             }
         });
+        getContentPane().add(VnumTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 125, 234, -1));
 
         CidTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CidTxtKeyReleased(evt);
             }
         });
+        getContentPane().add(CidTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 125, 234, -1));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel3.setText("Customer ID :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 128, 107, -1));
 
-        vehLab.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        vehLab.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         vehLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         vehLab.setText("Customer List");
+        getContentPane().add(vehLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 819, 37));
 
         listTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,86 +114,40 @@ public class CustomerListJFrame extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(listTbl);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 176, 800, 190));
+
+        homeBtn.setBackground(new java.awt.Color(255, 204, 204));
         homeBtn.setText("Home");
+        homeBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(homeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 49, 159, 32));
 
+        prtBtn.setBackground(new java.awt.Color(255, 204, 204));
         prtBtn.setText("Print");
+        prtBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         prtBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 prtBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(prtBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 400, 159, 32));
 
+        clrBtn.setBackground(new java.awt.Color(255, 204, 204));
         clrBtn.setText("Clear");
+        clrBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         clrBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clrBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(clrBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 400, 159, 32));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(vehLab, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap())
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(VnumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(CidTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(37, 37, 37))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(641, 641, 641)
-                                        .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap())))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(238, 238, 238))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(vehLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(VnumTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CidTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clrBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(prtBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(253, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/cc2.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -306,6 +269,7 @@ public class CustomerListJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField VnumTxt;
     private javax.swing.JButton clrBtn;
     private javax.swing.JButton homeBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
@@ -329,21 +293,21 @@ public class CustomerListJFrame extends javax.swing.JFrame {
 
     private void theader() {
         JTableHeader thead = listTbl.getTableHeader();
-       thead.setForeground(Color.BLUE);
+       thead.setForeground(Color.BLACK);
     
-       thead.setFont(new Font("Tahome", Font.BOLD, 14));
+       thead.setFont(new Font("Tahome", Font.BOLD, 12));
        
         TableColumn col1=listTbl.getColumnModel().getColumn(0);
         col1.setPreferredWidth(100);
         TableColumn col2=listTbl.getColumnModel().getColumn(1);
-        col2.setPreferredWidth(130);
+        col2.setPreferredWidth(100);
         TableColumn col3=listTbl.getColumnModel().getColumn(2);
-        col3.setPreferredWidth(150);
+        col3.setPreferredWidth(100);
         TableColumn col4=listTbl.getColumnModel().getColumn(3);
         col4.setPreferredWidth(100);
         TableColumn col5=listTbl.getColumnModel().getColumn(4);
-        col5.setPreferredWidth(105);
+        col5.setPreferredWidth(100);
         TableColumn col6=listTbl.getColumnModel().getColumn(5);
-        col6.setPreferredWidth(150);
+        col6.setPreferredWidth(100);
     }
 }
