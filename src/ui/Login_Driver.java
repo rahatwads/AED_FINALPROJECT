@@ -1,14 +1,15 @@
-package Cab_Booking;
+package ui;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
+import Cab_Booking.ConnectionClass;
 
 
-public class Login extends javax.swing.JFrame {
+public class Login_Driver extends javax.swing.JFrame {
 
     
-    public Login() {
+    public Login_Driver() {
         initComponents();
     }
 
@@ -99,9 +100,9 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
        try {
                     ConnectionClass con = new ConnectionClass();
-                    String Username = txtUser.getText();
+                    String username = txtUser.getText();
                     String pass = txtPass.getText();
-                    String sql = "select * from SignUp where username='"+Username+"' and password='"+pass+"'";
+                    String sql = "select * from Signup where username='"+username+"' and password='"+pass+"'";
                   
 //
 //                    st.setString(1, txtUser.getText());
@@ -109,9 +110,11 @@ public class Login extends javax.swing.JFrame {
 
                     ResultSet rs = con.s.executeQuery(sql);
                     if (rs.next()) {
-                        System.out.println("Login");
-                        this.setVisible(false);
-                        //new HomePage(txtUser.getText()).setVisible(true);
+                        
+                       DriverHome driverhome = new DriverHome();
+         driverhome.show();
+         dispose();
+                        
                     } else
 			JOptionPane.showMessageDialog(null, "Invalid Login or Password!");
                     this.setVisible(false);
@@ -125,7 +128,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         setVisible(false);
-		SignUp su = new SignUp();
+		SignUp_Driver su = new SignUp_Driver();
 		su.setVisible(true);
     }//GEN-LAST:event_btnSignUpActionPerformed
 
@@ -133,7 +136,7 @@ public class Login extends javax.swing.JFrame {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Login_Driver().setVisible(true);
             }
         });
     }

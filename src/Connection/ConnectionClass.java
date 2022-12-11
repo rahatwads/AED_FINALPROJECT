@@ -1,17 +1,17 @@
 
-package Cab_Booking;
+package Connection;
 import java.sql.*; 
 
 
 public class ConnectionClass {
      Connection c;
-     public Statement s;
+    Statement s;
     public ConnectionClass()
     {  
         try
         {  
             Class.forName("com.mysql.cj.jdbc.Driver");  
-            c =DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE","root","shivani3299");
+            c =DriverManager.getConnection("jdbc:mysql://localhost:3306/CabBooking_system?zeroDateTimeBehavior=CONVERT_TO_NULL","root","shivani3299");
             s =c.createStatement();
         }
         catch(Exception e)

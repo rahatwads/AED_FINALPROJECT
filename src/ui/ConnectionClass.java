@@ -1,5 +1,6 @@
 
-package Cab_Booking;
+package ui;
+import Cab_Booking.*;
 import java.sql.*; 
 
 
@@ -11,7 +12,7 @@ public class ConnectionClass {
         try
         {  
             Class.forName("com.mysql.cj.jdbc.Driver");  
-            c =DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE","root","shivani3299");
+            c =DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE?zeroDateTimeBehavior=CONVERT_TO_NULL","root","shivani3299");
             s =c.createStatement();
         }
         catch(Exception e)
