@@ -45,151 +45,98 @@ public class ReturnJFrame extends javax.swing.JFrame {
         lblCustomerId = new javax.swing.JLabel();
         txtOGPrice = new javax.swing.JTextField();
         lblRentDate = new javax.swing.JLabel();
+        lblRent_Id = new javax.swing.JLabel();
+        txtRent_Id = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(txttotalCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 73, -1));
 
+        lblReturnDate.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblReturnDate.setText("Return Date:");
+        getContentPane().add(lblReturnDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
 
+        btnReturnCar.setBackground(new java.awt.Color(255, 204, 204));
         btnReturnCar.setText("Return Car");
+        btnReturnCar.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         btnReturnCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReturnCarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnReturnCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 80, 30));
 
+        lblLateD.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblLateD.setText("Days Elapsed:");
+        getContentPane().add(lblLateD, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 210, -1, -1));
 
+        btnBack.setBackground(new java.awt.Color(255, 204, 204));
         btnBack.setText("Back");
+        btnBack.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 40, 30));
 
+        lblFine.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblFine.setText("Fine:");
+        getContentPane().add(lblFine, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
+        lblOGPrice.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblOGPrice.setText("Price: ");
+        getContentPane().add(lblOGPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 251, -1, -1));
+        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
 
+        lblTotalCost.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblTotalCost.setText("Total Cost:");
+        getContentPane().add(lblTotalCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
+        getContentPane().add(txtCarId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 93, -1));
+        getContentPane().add(txtCustomerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 73, -1));
 
+        txtTitle.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         txtTitle.setText("RETURN CAR");
+        getContentPane().add(txtTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
 
         txtLate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLateActionPerformed(evt);
             }
         });
+        getContentPane().add(txtLate, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 95, -1));
 
+        lblCarId.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblCarId.setText("Car Id:");
+        getContentPane().add(lblCarId, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 128, -1, -1));
 
         txtFine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFineActionPerformed(evt);
             }
         });
+        getContentPane().add(txtFine, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 83, -1));
 
+        lblCustomerId.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblCustomerId.setText("Customer Id:");
+        getContentPane().add(lblCustomerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, -1, -1));
+        getContentPane().add(txtOGPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 95, -1));
 
+        lblRentDate.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblRentDate.setText("Rent Date:");
+        getContentPane().add(lblRentDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 166, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(26, 26, 26)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblCarId)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtCarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(93, 93, 93))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblRentDate)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(64, 64, 64)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(27, 27, 27)
-                                            .addComponent(lblCustomerId)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(lblReturnDate)
-                                            .addGap(70, 70, 70))))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnReturnCar)
-                                    .addGap(49, 49, 49)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblTotalCost, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txttotalCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblOGPrice)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtOGPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblLateD)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtLate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblFine)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtFine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(359, 359, 359)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(txtTitle)))
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(txtTitle)
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCarId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCarId, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCustomerId)
-                        .addComponent(txtCustomerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRentDate)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblReturnDate))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLateD)
-                            .addComponent(txtLate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFine)
-                            .addComponent(txtFine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtOGPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblOGPrice)
-                            .addComponent(lblTotalCost)
-                            .addComponent(txttotalCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnReturnCar)
-                            .addComponent(btnBack))
-                        .addGap(37, 37, 37))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+        lblRent_Id.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lblRent_Id.setText("Rent_Id:");
+        getContentPane().add(lblRent_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 87, -1, -1));
+        getContentPane().add(txtRent_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 91, -1));
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car1.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +152,14 @@ public class ReturnJFrame extends javax.swing.JFrame {
     private void txtFineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFineActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFineActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+
+        UserRentalMenuJFrame al = new UserRentalMenuJFrame();
+        this.hide();
+        al.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,12 +201,14 @@ public class ReturnJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnReturnCar;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCarId;
     private javax.swing.JLabel lblCustomerId;
     private javax.swing.JLabel lblFine;
     private javax.swing.JLabel lblLateD;
     private javax.swing.JLabel lblOGPrice;
     private javax.swing.JLabel lblRentDate;
+    private javax.swing.JLabel lblRent_Id;
     private javax.swing.JLabel lblReturnDate;
     private javax.swing.JLabel lblTotalCost;
     private javax.swing.JTextField txtCarId;
@@ -259,6 +216,7 @@ public class ReturnJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtFine;
     private javax.swing.JTextField txtLate;
     private javax.swing.JTextField txtOGPrice;
+    private javax.swing.JTextField txtRent_Id;
     private javax.swing.JLabel txtTitle;
     private javax.swing.JTextField txttotalCost;
     // End of variables declaration//GEN-END:variables

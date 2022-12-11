@@ -35,76 +35,53 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
         lblAPassword = new javax.swing.JLabel();
         txtAUsername = new javax.swing.JTextField();
         jAPassword = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnALogin.setBackground(new java.awt.Color(255, 204, 204));
         btnALogin.setText("LOGIN");
+        btnALogin.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         btnALogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnALoginActionPerformed(evt);
             }
         });
+        getContentPane().add(btnALogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 60, 20));
 
+        btnABack.setBackground(new java.awt.Color(255, 204, 204));
         btnABack.setText("BACK");
+        btnABack.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         btnABack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnABackActionPerformed(evt);
             }
         });
+        getContentPane().add(btnABack, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 60, 20));
 
+        lblTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         lblTitle.setText("ADMIN LOGIN");
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
+        lblAUsername.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblAUsername.setText("USERNAME:");
+        getContentPane().add(lblAUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
 
+        lblAPassword.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblAPassword.setText("PASSWORD:");
+        getContentPane().add(lblAPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
 
         txtAUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAUsernameActionPerformed(evt);
             }
         });
+        getContentPane().add(txtAUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 160, -1));
+        getContentPane().add(jAPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 160, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(lblTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAUsername)
-                            .addComponent(lblAPassword)
-                            .addComponent(btnALogin))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnABack)
-                            .addComponent(txtAUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(jAPassword))))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblTitle)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblAUsername)
-                    .addComponent(txtAUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAPassword)
-                    .addComponent(jAPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnALogin)
-                    .addComponent(btnABack))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car2.jpeg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +153,7 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnABack;
     private javax.swing.JButton btnALogin;
     private javax.swing.JPasswordField jAPassword;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAPassword;
     private javax.swing.JLabel lblAUsername;
     private javax.swing.JLabel lblTitle;
