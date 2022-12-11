@@ -196,7 +196,7 @@ public class SignUp_Driver extends javax.swing.JFrame {
 		String password = txtPassword.getText();
 		String phno = txtPhno.getText();
                 
-                String sql = "insert into SignUp values('"+username+"', '"+name+"', '"+password+"', '"+phno+"')";
+                String sql = "insert into Signup values('"+username+"', '"+name+"', '"+password+"', '"+phno+"')";
 		c.s.executeUpdate(sql);
 		JOptionPane.showMessageDialog(null, "Account Created Successfully ");
                 
