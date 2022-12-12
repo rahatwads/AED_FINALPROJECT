@@ -38,6 +38,7 @@ public class UserLoginJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         btnULogin = new javax.swing.JButton();
         btnUBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
@@ -46,7 +47,10 @@ public class UserLoginJFrame extends javax.swing.JFrame {
         txtUUsername = new javax.swing.JTextField();
         jUPassword = new javax.swing.JPasswordField();
         btnRegister = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car2.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,7 +63,7 @@ public class UserLoginJFrame extends javax.swing.JFrame {
                 btnULoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnULogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 60, 30));
+        getContentPane().add(btnULogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 60, 30));
 
         btnUBack.setBackground(new java.awt.Color(255, 204, 204));
         btnUBack.setText("BACK");
@@ -69,7 +73,7 @@ public class UserLoginJFrame extends javax.swing.JFrame {
                 btnUBackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 50, 30));
+        getContentPane().add(btnUBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 50, 30));
 
         lblTitle.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         lblTitle.setText("USER LOGIN");
@@ -105,11 +109,10 @@ public class UserLoginJFrame extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 80, 30));
+        getContentPane().add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 80, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car2.jpeg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 390));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM (1).jpeg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -169,7 +172,7 @@ public class UserLoginJFrame extends javax.swing.JFrame {
                 //check if you have found a valid row
                 if(rs.next()) {
                       
-                    UserMainMenu umm = new UserMainMenu();
+                    UserRentalMenuJFrame umm = new UserRentalMenuJFrame();
                     this.hide();
                     umm.setVisible(true);
 
@@ -211,7 +214,7 @@ public class UserLoginJFrame extends javax.swing.JFrame {
     private void btnUBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUBackActionPerformed
         // TODO add your handling code here:
         
-        MainJFrame ur = new MainJFrame();
+        RentalUserMenuJFrame ur = new RentalUserMenuJFrame();
         this.hide();
         ur.setVisible(true);
     }//GEN-LAST:event_btnUBackActionPerformed
@@ -256,6 +259,7 @@ public class UserLoginJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnUBack;
     private javax.swing.JButton btnULogin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jUPassword;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUDob;

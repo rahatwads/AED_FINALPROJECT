@@ -13,6 +13,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,43 +31,33 @@ public class RentJFrame extends javax.swing.JFrame {
      */
     public RentJFrame() {
         initComponents();
-        
+        LoadCar_iD();
         jDateChooser_Rent.setDateFormatString("yyyy-MM-dd");
         jDateChooser_Return.setDateFormatString("yyyy-MM-dd");
-        
+
         Update_Table();
-        LoadCar_iD();
         autoID();
     }
-   
-         public Void LoadCar_iD()
-      {
-       try{
-       
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
-        PreparedStatement pstmt = c.prepareStatement("SELECT * FROM CARS WHERE STATUS='Available'");
-        ResultSet rs = pstmt.executeQuery();
-        jComboBox_Rent.removeAllItems();
-        
-        
-        while(rs.next())
-        {
-                jComboBox_Rent.addItem(rs.getString(2));
-        
-        }        
-       
-          
-   
-    }   catch (ClassNotFoundException ex) {
-            Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+//           
+    public void LoadCar_iD() {
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            PreparedStatement pstmt = c.prepareStatement("SELECT * FROM CARS ");
+            ResultSet rs = pstmt.executeQuery();
+            jComboBox_Rent.removeAllItems();
+
+            while (rs.next()) 
+            {
+                jComboBox_Rent.addItem(rs.getString(1));
+
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return null;
-      
-       
-      }
+    }
 //    
 //    Public void LoadCategory() 
 //    {
@@ -82,6 +73,8 @@ public class RentJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         txtCustomer_Id = new javax.swing.JTextField();
@@ -107,7 +100,13 @@ public class RentJFrame extends javax.swing.JFrame {
         lblRentId = new javax.swing.JLabel();
         txtRentId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car1.jpeg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM (1).jpeg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.white);
@@ -239,10 +238,10 @@ public class RentJFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel2.setText("Rent A Car");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 181, 39));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car1.jpeg"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 520));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM (1).jpeg"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,12 +258,12 @@ public class RentJFrame extends javax.swing.JFrame {
             rs.getString("MAX(RENT_ID)");
 
             if (rs.getString("MAX(RENT_ID)") == null) {
-                txtRentId.setText("C0001");
+                txtRentId.setText("R0001");
             } else {
                 long id = Long.parseLong(rs.getString("MAX(RENT_ID)").substring(2, rs.getString("MAX(RENT_ID)").length()));
                 id++;
 
-                txtRentId.setText("C0" + String.format("%03d", id));
+                txtRentId.setText("R0" + String.format("%03d", id));
 
             }
 
@@ -273,92 +272,83 @@ public class RentJFrame extends javax.swing.JFrame {
         }
 
     }
-    
-       
+
+
     private void txtCustomer_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustomer_IdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCustomer_IdActionPerformed
 
     private void txtLast_NameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLast_NameKeyReleased
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtLast_NameKeyReleased
 
     private void txtCustomer_IdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomer_IdKeyPressed
         // TODO add your handling code here:
-        
-       if(evt.getKeyCode() == KeyEvent.VK_ENTER)
-       {
-           String Customer_Id = txtCustomer_Id.getText();
-                 
-       try{
-         
-            Class.forName("com.mysql.cj.jdbc.Driver");
-               Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
-               
-               PreparedStatement pstmt2 = c.prepareStatement("SELECT * FROM CUSTOMERS WHERE CUSTOMER_ID = ?");
-               pstmt2.setString(1, Customer_Id);
-               ResultSet rs = pstmt2.executeQuery();
-               
-               
-                 if(rs.next() == false)
-                 {
-                   JOptionPane.showMessageDialog(this, "Customer Id Not Found.");
-                 }
-                 else
-                 {
-                   String First_Name = rs.getString("First_Name");
-                   txtFirst_Name.setText(First_Name.trim());
-                   
-                  String Last_Name = rs.getString("Last_Name");
-                   txtLast_Name.setText(Last_Name.trim());
-                 }
-       
-       }   catch (ClassNotFoundException ex) {
-               Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (SQLException ex) {
-               Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
-           }
-       }
-        
-        
-        
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String Customer_Id = txtCustomer_Id.getText();
+
+            try {
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+
+                PreparedStatement pstmt = c.prepareStatement("SELECT * FROM CUSTOMERS WHERE CUSTOMER_ID = ?");
+                pstmt.setString(1, Customer_Id);
+                ResultSet rs = pstmt.executeQuery();
+
+                if (rs.next() == false) {
+                    JOptionPane.showMessageDialog(this, "Customer Id Not Found.");
+                } else {
+                    String First_Name = rs.getString("First_Name");
+                    txtFirst_Name.setText(First_Name.trim());
+
+                    String Last_Name = rs.getString("Last_Name");
+                    txtLast_Name.setText(Last_Name.trim());
+                }
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
     }//GEN-LAST:event_txtCustomer_IdKeyPressed
 
     private void jComboBox_RentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_RentActionPerformed
         // TODO add your handling code here:
+
+        try {
         
-        String Car_Id = jComboBox_Rent.getSelectedItem().toString();
-       
-         
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
-                
-               PreparedStatement pstmt = c.prepareStatement("SELECT * FROM CARS WHERE CAR_ID = ?");
-               pstmt.setString(1, Car_Id);
-               ResultSet rs = pstmt.executeQuery();
-               
-               
-                 if(rs.next() == false)
-                 {
-                   JOptionPane.showMessageDialog(this, "Car Id Not Found.");
-                 }
-                 else
-                 {
-                   String Price = rs.getString("FEE_PER_DAY");
-                   txtPrice.setText(Price.trim());
-                 }
-                
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-               
-       
-                
-               
+            String Car_Id; 
+        if(jComboBox_Rent.getSelectedItem()==null){
+            Car_Id = "";
+        }
+        else{
+        Car_Id = jComboBox_Rent.getSelectedItem().toString();
+        }
+        
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            String status = "AVAILABLE";
+            PreparedStatement pstmt2 = c.prepareStatement("SELECT * FROM CARS WHERE CAR_ID = ? AND STATUS = ?");
+            pstmt2.setString(1, Car_Id);
+            pstmt2.setString(2, status);
+            ResultSet rs = pstmt2.executeQuery();
+
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(this, "MAKE ANOTHER BOOKING.");
+            } else {
+                String Price = rs.getString("FEE_PER_DAY");
+                txtPrice.setText(Price.trim());
+           }
+
+        } catch (ClassNotFoundException | NullPointerException | SQLException ex) {
+            Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_jComboBox_RentActionPerformed
 
     private void jComboBox_PickUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_PickUpActionPerformed
@@ -376,7 +366,8 @@ public class RentJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
+        
+        try {
         String Rent_Id = txtRentId.getText();
         String Car_Id = jComboBox_Rent.getSelectedItem().toString();
         String Customer_Id = txtCustomer_Id.getText();
@@ -384,32 +375,44 @@ public class RentJFrame extends javax.swing.JFrame {
         SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
         String RentDate = Date_Format.format(jDateChooser_Rent.getDate());
 
-        SimpleDateFormat Date_Format1 = new SimpleDateFormat("yyyy-MM-dd");
-        String ReturnDate = Date_Format1.format(jDateChooser_Return.getDate());
+//        SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+        String ReturnDate = Date_Format.format(jDateChooser_Return.getDate());
 
         String Pick_Up = jComboBox_PickUp.getSelectedItem().toString();
         String Drop = jComboBox_Drop.getSelectedItem().toString();
         String Price = txtPrice.getText();
 
-        try {
+        
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
 
-            PreparedStatement pstmt3 = c.prepareStatement("INSERT INTO CARS(RENT_ID, CAR_ID, CUSTOMER_ID, RENT_DATE, RETURN_DATE, PICKUP_LOCATION, DROP_LOCATION, PRICE) VALUES(?,?,?,?,?,?,?,?)");
-            pstmt3.setString (1,Rent_Id);
-            pstmt3.setString(2, Car_Id);
-            pstmt3.setString(3, Customer_Id);
-            pstmt3.setString(4, RentDate);
-            pstmt3.setString(5, ReturnDate);
-            pstmt3.setString(6, Pick_Up);
-            pstmt3.setString(7, Drop);
-            pstmt3.setString(8, Price );
-            ResultSet rs = pstmt3.executeQuery();
-            autoID();
+            PreparedStatement pstmt = c.prepareStatement("INSERT INTO RENT(RENT_ID, CAR_ID, CUSTOMER_ID, RENT_DATE, RETURN_DATE, PICKUP_LOCATION, DROP_LOCATION, PRICE) VALUES(?,?,?,?,?,?,?,?)");
+            
+            pstmt.setString(1, Rent_Id);
+            pstmt.setString(2, Car_Id);
+            pstmt.setString(3, Customer_Id);
+            pstmt.setString(4, RentDate);
+            pstmt.setString(5, ReturnDate);
+            pstmt.setString(6, Pick_Up);
+            pstmt.setString(7, Drop);
+            pstmt.setString(8, Price);
+            
+            pstmt.executeUpdate();
+            
 
             JOptionPane.showMessageDialog(this, "Your Booking Has Been Made!");
             // populateCARS();
-
+               txtRentId.setText("");
+               txtCustomer_Id.setText("");
+               jDateChooser_Rent.setDate(null);
+               jDateChooser_Return.setDate(null);
+               jComboBox_PickUp.setSelectedIndex(-1);
+               jComboBox_Drop.setSelectedIndex(-1);
+               jComboBox_Rent.setSelectedIndex(-1);
+               txtPrice.setText("");
+            autoID();
+         
+        
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RentJFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -417,7 +420,7 @@ public class RentJFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
-public void Update_Table() {
+    public void Update_Table() {
 
         int r;
 
@@ -452,7 +455,6 @@ public void Update_Table() {
             System.out.println(ex);
         }
     }
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -497,6 +499,9 @@ public void Update_Table() {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -515,4 +520,3 @@ public void Update_Table() {
     private javax.swing.JLabel txtReturnDate;
     // End of variables declaration//GEN-END:variables
 }
-

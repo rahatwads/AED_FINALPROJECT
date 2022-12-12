@@ -4,6 +4,18 @@
  */
 package ui;
 
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tanvikakde
@@ -32,9 +44,8 @@ public class ReturnJFrame extends javax.swing.JFrame {
         lblLateD = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         lblFine = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         lblOGPrice = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateChooser_Return = new com.toedter.calendar.JDateChooser();
         lblTotalCost = new javax.swing.JLabel();
         txtCarId = new javax.swing.JTextField();
         txtCustomerId = new javax.swing.JTextField();
@@ -45,12 +56,17 @@ public class ReturnJFrame extends javax.swing.JFrame {
         lblCustomerId = new javax.swing.JLabel();
         txtOGPrice = new javax.swing.JTextField();
         lblRentDate = new javax.swing.JLabel();
-        lblRent_Id = new javax.swing.JLabel();
-        txtRent_Id = new javax.swing.JTextField();
+        txtRentDate = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txttotalCost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttotalCostActionPerformed(evt);
+            }
+        });
         getContentPane().add(txttotalCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 73, -1));
 
         lblReturnDate.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -68,7 +84,7 @@ public class ReturnJFrame extends javax.swing.JFrame {
         getContentPane().add(btnReturnCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 80, 30));
 
         lblLateD.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        lblLateD.setText("Days Elapsed:");
+        lblLateD.setText("Elapsed?:");
         getContentPane().add(lblLateD, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 210, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(255, 204, 204));
@@ -84,16 +100,21 @@ public class ReturnJFrame extends javax.swing.JFrame {
         lblFine.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblFine.setText("Fine:");
         getContentPane().add(lblFine, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
         lblOGPrice.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblOGPrice.setText("Price: ");
         getContentPane().add(lblOGPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 251, -1, -1));
-        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
+        getContentPane().add(jDateChooser_Return, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
 
         lblTotalCost.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblTotalCost.setText("Total Cost:");
         getContentPane().add(lblTotalCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
+
+        txtCarId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCarIdKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtCarId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 93, -1));
         getContentPane().add(txtCustomerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 73, -1));
 
@@ -122,27 +143,85 @@ public class ReturnJFrame extends javax.swing.JFrame {
         lblCustomerId.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblCustomerId.setText("Customer Id:");
         getContentPane().add(lblCustomerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, -1, -1));
+
+        txtOGPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOGPriceActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtOGPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 95, -1));
 
         lblRentDate.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblRentDate.setText("Rent Date:");
         getContentPane().add(lblRentDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 166, -1, -1));
 
-        lblRent_Id.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        lblRent_Id.setText("Rent_Id:");
-        getContentPane().add(lblRent_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 87, -1, -1));
-        getContentPane().add(txtRent_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 91, -1));
+        txtRentDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRentDateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtRentDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 169, 95, -1));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car1.jpeg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM (1).jpeg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReturnCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnCarActionPerformed
         // TODO add your handling code here:
+        
+        
+        String Car_Id =txtCarId.getText();
+        String Customer_Id = txtCustomerId.getText();
+        String Rent_Date = txtRentDate.getText();
+        
+        SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
+        String Return_Date = Date_Format.format(jDateChooser_Return.getDate());
+        
+        String Elapsed = txtLate.getText();
+        String Price = txtOGPrice.getText();
+        String Fine =txtFine.getText();
+        String Total_Cost = txttotalCost.getText();
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+            
+            PreparedStatement pstmt = c.prepareStatement("INSERT INTO RENT(CAR_ID, CUSTOMER_ID,RENT_DATE,RETURN_DATE,ELAPSED,PRICE, FINE, TOTAL_COST) VALUES(?,?,?,?,?,?,?,?)");
+            
+            pstmt.setString(1, Car_Id);
+            pstmt.setString(2, Customer_Id);
+            pstmt.setString(3, Rent_Date);
+            pstmt.setString(4, Return_Date);
+            pstmt.setString(5, Elapsed);
+            pstmt.setString(6, Price);
+            pstmt.setString(7, Fine);
+            pstmt.setString(8, Total_Cost);
+            
+            PreparedStatement pstmt1 = c.prepareStatement("UPDATE CARS SET STATUS = 'AVAILABLE' WHERE CAR_ID=?");
+            pstmt1.setString(1, Car_Id);
+            pstmt1.executeUpdate();
+            
+            PreparedStatement pstmt2 = c.prepareStatement("DELETE FROM RENT WHERE CAR_ID=?");
+            pstmt2.setString(1, Car_Id);
+            pstmt2.executeUpdate();
+            
+           
+            
+            
+             JOptionPane.showMessageDialog(this, "Thank You For Riding With Us!");
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ReturnJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReturnJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        UserRentalMenuJFrame al = new  UserRentalMenuJFrame();
+        this.hide();
+        al.setVisible(true);
+       
     }//GEN-LAST:event_btnReturnCarActionPerformed
 
     private void txtLateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLateActionPerformed
@@ -156,10 +235,88 @@ public class ReturnJFrame extends javax.swing.JFrame {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
 
-        UserRentalMenuJFrame al = new UserRentalMenuJFrame();
+        RentalUserMenuJFrame al = new RentalUserMenuJFrame();
         this.hide();
         al.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtCarIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCarIdKeyPressed
+        // TODO add your handling code here:
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+        
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
+                
+                String Car_Id = txtCarId.getText();
+                
+                PreparedStatement pstmt = c.prepareStatement("SELECT CAR_ID, CUSTOMER_ID, RENT_DATE, RETURN_DATE, PRICE, DATEDIFF(NOW(),RETURN_DATE)AS ELAPSED, FINE,(PRICE+FINE)AS TOTAL_COST FROM RENT WHERE CAR_ID = ?");
+                pstmt.setString(1, Car_Id);
+                ResultSet rs = pstmt.executeQuery();
+                
+                if(rs.next() == false)
+                {
+                    JOptionPane.showMessageDialog(this, "Car_Id Not Found.");
+                }
+                else
+                {
+                    String Customer_Id = rs.getString("CUSTOMER_ID");
+                    txtCustomerId.setText(Customer_Id.trim());
+                    
+                    String Rent_Date = rs.getString("RENT_DATE");
+                    txtRentDate.setText(Rent_Date);
+                    
+                    Date Return_Date = rs.getDate("RETURN_DATE");
+                    jDateChooser_Return.setDate(Return_Date);
+                    
+                    String Elapsed = rs.getString("ELAPSED");
+                    int elapsed = Integer.parseInt(Elapsed);
+                     
+                     if(elapsed > 0)
+                     {
+                         txtLate.setText("ELAPSED");
+                         
+                         int Fine = elapsed * 100;
+                         
+                         txtFine.setText(String.valueOf(Fine));
+                     }
+                     else
+                     {
+                         txtLate.setText("0");
+                         txtFine.setText("0");
+                         
+                     }
+                     
+                    
+                   String Price = rs.getString("Price");
+                   txtOGPrice.setText(Price.trim());
+                    
+                    String Total_Cost = rs.getString("TOTAL_COST");
+                   txttotalCost.setText(Total_Cost.trim());
+                }
+                
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(ReturnJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+              
+        
+        }
+        
+    }//GEN-LAST:event_txtCarIdKeyPressed
+
+    private void txtRentDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRentDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRentDateActionPerformed
+
+    private void txtOGPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOGPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOGPriceActionPerformed
+
+    private void txttotalCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotalCostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttotalCostActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,8 +356,7 @@ public class ReturnJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnReturnCar;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateChooser_Return;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCarId;
     private javax.swing.JLabel lblCustomerId;
@@ -208,7 +364,6 @@ public class ReturnJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblLateD;
     private javax.swing.JLabel lblOGPrice;
     private javax.swing.JLabel lblRentDate;
-    private javax.swing.JLabel lblRent_Id;
     private javax.swing.JLabel lblReturnDate;
     private javax.swing.JLabel lblTotalCost;
     private javax.swing.JTextField txtCarId;
@@ -216,7 +371,7 @@ public class ReturnJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtFine;
     private javax.swing.JTextField txtLate;
     private javax.swing.JTextField txtOGPrice;
-    private javax.swing.JTextField txtRent_Id;
+    private javax.swing.JTextField txtRentDate;
     private javax.swing.JLabel txtTitle;
     private javax.swing.JTextField txttotalCost;
     // End of variables declaration//GEN-END:variables

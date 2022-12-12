@@ -35,9 +35,11 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
         lblAPassword = new javax.swing.JLabel();
         txtAUsername = new javax.swing.JTextField();
         jAPassword = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 0, 255));
+        setIgnoreRepaint(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnALogin.setBackground(new java.awt.Color(255, 204, 204));
@@ -48,7 +50,7 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
                 btnALoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnALogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 60, 20));
+        getContentPane().add(btnALogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 60, 20));
 
         btnABack.setBackground(new java.awt.Color(255, 204, 204));
         btnABack.setText("BACK");
@@ -58,30 +60,30 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
                 btnABackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnABack, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 60, 20));
+        getContentPane().add(btnABack, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 60, 20));
 
         lblTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         lblTitle.setText("ADMIN LOGIN");
-        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
 
         lblAUsername.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblAUsername.setText("USERNAME:");
-        getContentPane().add(lblAUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
+        getContentPane().add(lblAUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
 
         lblAPassword.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblAPassword.setText("PASSWORD:");
-        getContentPane().add(lblAPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
+        getContentPane().add(lblAPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
         txtAUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAUsernameActionPerformed(evt);
             }
         });
-        getContentPane().add(txtAUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 160, -1));
-        getContentPane().add(jAPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 160, -1));
+        getContentPane().add(txtAUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 160, -1));
+        getContentPane().add(jAPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 160, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car2.jpeg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM (1).jpeg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -93,7 +95,7 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
         String password = jAPassword.getText();
 
         if(username.equals("admin") && password.equals("admin123")){
-            AdminMainMenueJFrame c = new AdminMainMenueJFrame();
+            CarRegistrationJFrame c = new CarRegistrationJFrame();
             this.hide();
             c.setVisible(true);
         }
@@ -153,7 +155,7 @@ public class AdminLoginJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnABack;
     private javax.swing.JButton btnALogin;
     private javax.swing.JPasswordField jAPassword;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAPassword;
     private javax.swing.JLabel lblAUsername;
     private javax.swing.JLabel lblTitle;

@@ -56,16 +56,16 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
         lblConfirmPassword = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPassword = new javax.swing.JPasswordField();
         jPasswordField_Re = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblEmailid.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblEmailid.setText("EMAIL ID:");
-        getContentPane().add(lblEmailid, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 457, -1, -1));
+        getContentPane().add(lblEmailid, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 426, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         lblTitle.setText("CUSTOMER REGISTRATION");
@@ -79,7 +79,7 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
                 btnCreateAccountActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 120, 30));
+        getContentPane().add(btnCreateAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 534, 120, 30));
 
         btnBack.setBackground(new java.awt.Color(255, 204, 204));
         btnBack.setText("BACK");
@@ -89,7 +89,7 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 40, 30));
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 534, 91, 30));
 
         txtCustomerId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,14 +126,14 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
 
         lblDob.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblDob.setText("DOB:");
-        getContentPane().add(lblDob, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 337, -1, -1));
+        getContentPane().add(lblDob, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 318, -1, -1));
 
         lblAddress.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblAddress.setText("ADDRESS:");
-        getContentPane().add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 364, -1, -1));
-        getContentPane().add(txtEmailid, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 454, 287, -1));
-        getContentPane().add(textAreaAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 364, 253, -1));
-        getContentPane().add(Date_Of_Birth, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 331, 137, -1));
+        getContentPane().add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 364, -1, -1));
+        getContentPane().add(txtEmailid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 423, 287, -1));
+        getContentPane().add(textAreaAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 364, 225, 46));
+        getContentPane().add(Date_Of_Birth, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 318, 137, -1));
 
         lblUsername.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblUsername.setText("USERNAME:");
@@ -154,10 +154,6 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
         lblConfirmPassword.setText("CONFIRM PASSWORD:");
         getContentPane().add(lblConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 268, -1, -1));
 
-        jLabel1.setBackground(java.awt.Color.pink);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car1.jpeg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -4, 740, 540));
-
         jPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordActionPerformed(evt);
@@ -165,6 +161,9 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 136, -1));
         getContentPane().add(jPasswordField_Re, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 265, 136, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM (1).jpeg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -248,7 +247,9 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
             txtCustomerId.setText("");
             txtFirstName.setText("");
             txtLastName.setText("");
-            //Date_Of_Birth.setDate("");
+            txtUsername.setText("");
+            jPassword.setText("");
+            jPasswordField_Re.setText("");
             textAreaAddress.setText("");
             textAreaAddress.setText("");
             
@@ -265,9 +266,9 @@ public class UserRegistrationJFrame extends javax.swing.JFrame {
         
         
         
-//        MainJFrame al = new MainJFrame();
-//        this.hide();
-//        al.setVisible(true);
+        UserLoginJFrame al = new  UserLoginJFrame();
+        this.hide();
+        al.setVisible(true);
     }//GEN-LAST:event_btnCreateAccountActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

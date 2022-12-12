@@ -40,6 +40,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblCarId = new javax.swing.JLabel();
@@ -58,7 +59,9 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDisplay = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car1.jpeg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -151,7 +154,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 67, 330, 480));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 330, 480));
 
         tblDisplay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,10 +194,10 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblDisplay);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 484, 250));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 484, 250));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/car1.jpeg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 560));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM (1).jpeg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -349,7 +352,12 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
             pstmt.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Details Have Been Updated!");
-            
+            txtCarId.setText("");
+            txtModel.setText("");
+            txtMake.setText("");
+            CBStatus.setSelectedIndex(-1);
+            txtFeePerDay.setText("");
+            txtModel.requestFocus();
             Update_Table(); 
             
         } catch (ClassNotFoundException ex) {
@@ -385,6 +393,12 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
                
                JOptionPane.showMessageDialog(this, "Details Have Been Deleted!");
                
+               txtCarId.setText("");
+               txtModel.setText("");
+               txtMake.setText("");
+               CBStatus.setSelectedIndex(-1);
+               txtFeePerDay.setText("");
+               txtModel.requestFocus();
                Update_Table();
                
               } catch (ClassNotFoundException ex) {
@@ -400,7 +414,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
 
-        AdminMainMenueJFrame amm = new AdminMainMenueJFrame();
+        RentalUserMenuJFrame amm = new RentalUserMenuJFrame();
         this.hide();
         amm.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -473,6 +487,7 @@ public class CarRegistrationJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
