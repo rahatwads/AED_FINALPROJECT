@@ -111,9 +111,11 @@ public class Login_User extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        SignUp_User signupuser = new SignUp_User();
-         signupuser.show();
-         dispose();
+       
+         
+                             SignUp_User  csh3 = new   SignUp_User ();
+        this.hide();
+        csh3.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -130,8 +132,9 @@ public class Login_User extends javax.swing.JFrame {
                     ResultSet rs = con.s.executeQuery(sql);
                     if (rs.next()) {
                         
-                        new CabBookHomePage().setVisible(true);
-                        this.setVisible(false);
+                        CabBookHomePage  csh3 = new   CabBookHomePage ();
+        this.hide();
+        csh3.setVisible(true);
                         
                     } else
 			JOptionPane.showMessageDialog(null, "Invalid Login or Password!");
@@ -145,9 +148,10 @@ public class Login_User extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
-       CabBookMAinJFram.show();
-       dispose();
+      
+      CabBookMain  csh3 = new  CabBookMain ();
+        this.hide();
+        csh3.setVisible(true);
        
        
     }//GEN-LAST:event_jButton3ActionPerformed

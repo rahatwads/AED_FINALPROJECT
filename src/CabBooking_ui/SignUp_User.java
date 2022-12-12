@@ -215,22 +215,24 @@ public class SignUp_User extends javax.swing.JFrame {
 		JOptionPane.showMessageDialog(null, "Account Created Successfully ");
                 autoID();
                 
-               Login_User login1=new Login_User();
-               login1.show();
-               dispose();
+             Login_User csh = new     Login_User();
+        this.hide();
+        csh.setVisible(true);
                
          }catch(Exception e){
                 System.out.println(e);
          }
-        Login_User userlogin = new Login_User();
-         userlogin.show();
-         dispose();
+            
+             Login_User csh = new     Login_User();
+        this.hide();
+        csh.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-          CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
-       CabBookMAinJFram.show();
-       dispose();
+          
+      CabBookMain csh4 = new     CabBookMain();
+        this.hide();
+        csh4.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -101,39 +101,49 @@ public class CabBookAdminHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-          CabBookAdminHome mainpagehome = new CabBookAdminHome();
-         mainpagehome.show();
-         dispose();
+      
+                 CabBookAdminHome csh = new   CabBookAdminHome();
+        this.hide();
+        csh.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-   CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
-       CabBookMAinJFram.show();
-       dispose();
+   
+       
+                 CabBookMain csh1 = new   CabBookMain();
+        this.hide();
+        csh1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
-        ViewDrivers drivers = new ViewDrivers();
-       drivers.show();
-       dispose();
+      
+       ViewDrivers csh2 = new   ViewDrivers();
+        this.hide();
+        csh2.setVisible(true);
+       
     }//GEN-LAST:event_btnCustomerActionPerformed
 
     private void btnDriverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDriverActionPerformed
-        View__Customer customer = new View__Customer();
-      customer.show();
-       dispose();
+      
+          View__Customer csh3 = new     View__Customer();
+        this.hide();
+        csh3.setVisible(true);
     }//GEN-LAST:event_btnDriverActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       ViewIntercityBookedCab customer2 = new ViewIntercityBookedCab();
-      customer2.show();
-       dispose();
+       
+          ViewIntercityBookedCab csh4 = new     ViewIntercityBookedCab();
+        this.hide();
+        csh4.setVisible(true);
+        
+   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        ViewIntracityBookedCab customer2 = new ViewIntracityBookedCab();
-      customer2.show();
-       dispose();
+      
+         ViewIntracityBookedCab csh5 = new      ViewIntracityBookedCab();
+        this.hide();
+        csh5.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

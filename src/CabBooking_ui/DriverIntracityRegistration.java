@@ -142,9 +142,10 @@ public class DriverIntracityRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpriceActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        DriverHome DriverH = new DriverHome();
-        DriverH .show();
-        dispose();
+       
+                     DriverHome  csh2 = new  DriverHome();
+        this.hide();
+        csh2.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -161,10 +162,11 @@ public class DriverIntracityRegistration extends javax.swing.JFrame {
                 String sql = "insert into DriverIntracity(driver,source,destination,car,price) values('"+driver+"', '"+source+"', '"+destination+"', '"+car+"', '"+price+"')";
 		c.s.executeUpdate(sql);
 		JOptionPane.showMessageDialog(null, "Account Created Successfully ");
-                
-                DriverHome driver1 = new DriverHome();
-      driver1.show();
-       dispose();
+            
+       
+                     DriverHome  csh2 = new  DriverHome();
+        this.hide();
+        csh2.setVisible(true);
                
                
          }catch(Exception e){

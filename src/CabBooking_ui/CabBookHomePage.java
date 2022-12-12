@@ -70,27 +70,31 @@ public class CabBookHomePage extends javax.swing.JFrame {
         getContentPane().add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 16, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CabBooking_ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-620, -220, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-620, -180, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterActionPerformed
-        BookIntercityCab bookinter = new BookIntercityCab();
-       bookinter.show();
-       dispose();
+
+        BookIntercityCab csh = new  BookIntercityCab();
+        this.hide();
+        csh.setVisible(true);
     }//GEN-LAST:event_btnInterActionPerformed
 
     private void btnIntraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntraActionPerformed
-        BookIntracityCabs bookintra = new BookIntracityCabs();
-       bookintra.show();
-       dispose();
+
+        BookIntracityCabs csh = new  BookIntracityCabs();
+        this.hide();
+        csh.setVisible(true);
+       
     }//GEN-LAST:event_btnIntraActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
-       CabBookMAinJFram.show();
-       dispose();
+
+        CabBookMain csh = new  CabBookMain();
+        this.hide();
+        csh.setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
