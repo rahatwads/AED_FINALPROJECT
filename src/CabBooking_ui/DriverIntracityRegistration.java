@@ -43,20 +43,26 @@ public class DriverIntracityRegistration extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setText("INTRACITY DRIVER REGISTRATION");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("Driver Name");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 74, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("Source");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 112, 72, -1));
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setText("Destination");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 156, 72, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 156, 90, -1));
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setText("Car");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 193, 72, -1));
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("Price");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 236, 72, -1));
         getContentPane().add(txtdrivername, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 71, 93, -1));
@@ -90,7 +96,7 @@ public class DriverIntracityRegistration extends javax.swing.JFrame {
         getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 233, 93, -1));
 
         btnAdd.setBackground(new java.awt.Color(255, 255, 0));
-        btnAdd.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        btnAdd.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnAdd.setText("Add ");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +106,7 @@ public class DriverIntracityRegistration extends javax.swing.JFrame {
         getContentPane().add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 286, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(255, 51, 0));
+        btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,8 +116,8 @@ public class DriverIntracityRegistration extends javax.swing.JFrame {
         getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 286, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CabBooking_ui/drew-beamer-kUHfMW8awpE-unsplash.jpg"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CabBooking_ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

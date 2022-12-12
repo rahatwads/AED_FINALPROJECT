@@ -53,6 +53,7 @@ public class SystemAdminLogin extends javax.swing.JFrame {
         jLabel1.setText("LOGIN");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 21, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("Username");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 75, -1, -1));
 
@@ -65,6 +66,7 @@ public class SystemAdminLogin extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 345, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("Password");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 150, -1, -1));
         getContentPane().add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 72, 142, -1));
@@ -72,7 +74,7 @@ public class SystemAdminLogin extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CabBooking_ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, -150, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

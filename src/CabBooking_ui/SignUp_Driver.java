@@ -45,6 +45,7 @@ public class SignUp_Driver extends javax.swing.JFrame {
         jLabel1.setText("DRIVER SIGNUP");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 17, 111, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("Username");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 77, -1, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 140, -1, -1));
@@ -70,17 +71,21 @@ public class SignUp_Driver extends javax.swing.JFrame {
         });
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 173, 110, -1));
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setText("Password");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 176, -1, -1));
         getContentPane().add(txtPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 222, 110, -1));
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setText("Ph no.");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 225, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("Name");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 128, -1, -1));
 
         btnSignup.setBackground(new java.awt.Color(255, 255, 0));
+        btnSignup.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnSignup.setText("Signup");
         btnSignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +95,7 @@ public class SignUp_Driver extends javax.swing.JFrame {
         getContentPane().add(btnSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 288, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 0));
+        btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,8 +105,9 @@ public class SignUp_Driver extends javax.swing.JFrame {
         getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 288, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(51, 204, 0));
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jButton1.setText("Login");
-        jButton1.setBorder(null);
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
