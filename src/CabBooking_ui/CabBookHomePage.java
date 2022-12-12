@@ -25,15 +25,10 @@ public class CabBookHomePage extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem9 = new javax.swing.JMenuItem();
+        btnInter = new javax.swing.JButton();
+        btnIntra = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         jMenuItem9.setText("jMenuItem9");
 
@@ -41,77 +36,62 @@ public class CabBookHomePage extends javax.swing.JFrame {
         setTitle("Cab Booking Home Page");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/shivanirahatwad/Downloads/photo-of-high-rise-buildings-during-nighttime-philadelphia-philadelphia-wallpaper-preview.jpg")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jButton1.setText("jButton1");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
-
-        jMenuBar1.setBackground(new java.awt.Color(204, 204, 204));
-
-        jMenu2.setText("BOOK INTERCITY CAB");
-        jMenu2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-
-        jMenuItem5.setText("BOOK CAB");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        btnInter.setBackground(new java.awt.Color(255, 255, 51));
+        btnInter.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnInter.setText("BOOK INTERCITY CAB");
+        btnInter.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnInter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                btnInterActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        getContentPane().add(btnInter, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 240, -1));
 
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("BOOK INTRACITY CAB");
-        jMenu3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-
-        jMenuItem8.setText("BOOK CAB");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        btnIntra.setBackground(new java.awt.Color(255, 255, 51));
+        btnIntra.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnIntra.setText("BOOK INTRACITY CAB");
+        btnIntra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnIntra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                btnIntraActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem8);
+        getContentPane().add(btnIntra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 240, -1));
 
-        jMenuBar1.add(jMenu3);
-
-        jMenu5.setText("LOGOUT");
-        jMenu5.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-
-        jMenuItem1.setText("LOGOUT");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout.setBackground(new java.awt.Color(204, 204, 204));
+        btnLogout.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnLogout.setText("LOGOUT");
+        btnLogout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem1);
+        getContentPane().add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 16, -1, -1));
 
-        jMenuBar1.add(jMenu5);
-
-        setJMenuBar(jMenuBar1);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CabBooking_ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-620, -220, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-       BookIntercityCab bookinter = new BookIntercityCab();
+    private void btnInterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterActionPerformed
+        BookIntercityCab bookinter = new BookIntercityCab();
        bookinter.show();
        dispose();
-       
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_btnInterActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void btnIntraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntraActionPerformed
         BookIntracityCabs bookintra = new BookIntracityCabs();
        bookintra.show();
        dispose();
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_btnIntraActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-         CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
        CabBookMAinJFram.show();
        dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,15 +130,10 @@ public class CabBookHomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnInter;
+    private javax.swing.JButton btnIntra;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }

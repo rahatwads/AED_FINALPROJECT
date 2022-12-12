@@ -66,21 +66,27 @@ public class SignUp_User extends javax.swing.JFrame {
         jLabel1.setText("USER REGISTRATION");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 21, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("Customer ID");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 79, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("Name");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 135, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setText("username");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 187, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setText("DOB (Enter in DDMMYY Format)");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 235, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("Address");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 279, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setText("Email Adress");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 332, -1, -1));
 
