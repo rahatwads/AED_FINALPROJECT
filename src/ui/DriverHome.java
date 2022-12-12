@@ -4,6 +4,14 @@
  */
 package ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shivanirahatwad
@@ -13,9 +21,29 @@ public class DriverHome extends javax.swing.JFrame {
     /**
      * Creates new form DriverHome
      */
-    public DriverHome() {
+    String username;
+    
+    public DriverHome(String username) {
         initComponents();
+        this.username = username;
     }
+    public DriverHome(){
+        initComponents();
+        Update_Table();
+//        Update_Table2();
+    }
+    
+    
+    public void Update_Table()
+{
+int r;
+
+}
+    /*
+    "SELECT * FROM intercitycabbook where dname ="+username
+    "SELECT * FROM intracitycabbook where dname ="+username
+    */
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,43 +56,44 @@ public class DriverHome extends javax.swing.JFrame {
 
         btnIntercity = new javax.swing.JButton();
         btnIntracity = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnIntercity.setBackground(new java.awt.Color(255, 153, 153));
         btnIntercity.setText("INTERCITY REGISTRATION");
+        btnIntercity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnIntercity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIntercityActionPerformed(evt);
             }
         });
+        getContentPane().add(btnIntercity, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
 
+        btnIntracity.setBackground(new java.awt.Color(255, 153, 153));
         btnIntracity.setText("INTRACITY REGISTRATION");
+        btnIntracity.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnIntracity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIntracityActionPerformed(evt);
             }
         });
+        getContentPane().add(btnIntracity, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(btnIntercity)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                .addComponent(btnIntracity)
-                .addGap(103, 103, 103))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIntercity)
-                    .addComponent(btnIntracity))
-                .addContainerGap(210, Short.MAX_VALUE))
-        );
+        jButton1.setBackground(new java.awt.Color(255, 0, 51));
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton1.setText("LOGOUT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 17, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -60, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -80,6 +109,12 @@ public class DriverHome extends javax.swing.JFrame {
         DIntraR .show();
         dispose();
     }//GEN-LAST:event_btnIntracityActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+          CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
+       CabBookMAinJFram.show();
+       dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,15 +144,15 @@ public class DriverHome extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DriverHome().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new DriverHome().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIntercity;
     private javax.swing.JButton btnIntracity;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

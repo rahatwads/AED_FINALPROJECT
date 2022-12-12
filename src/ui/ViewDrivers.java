@@ -3,25 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.Vector;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;;
 
 /**
  *
  * @author shivanirahatwad
  */
-public class ViewIntercityBookedCab extends javax.swing.JFrame {
+public class ViewDrivers extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewIntercityBookedCab
+     * Creates new form ViewDrivers
      */
-    public ViewIntercityBookedCab() {
+    public ViewDrivers() {
         initComponents();
         Update_Table();
     }
@@ -32,7 +32,7 @@ int r;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/BONVOYAGE", "root", "shivani3299");
-            PreparedStatement pstmt = c.prepareStatement("SELECT * FROM intercitycabbook");
+            PreparedStatement pstmt = c.prepareStatement("SELECT driver,source,destination,car,price FROM DriverIntercity union SELECT driver,source,destination,car,price FROM DriverIntracity");
             ResultSet rs = pstmt.executeQuery();
 
             ResultSetMetaData rd = rs.getMetaData();
@@ -45,13 +45,12 @@ int r;
                 Vector v2 = new Vector();
 
                 for (int i = 1; i <= r; i++) {
-                    v2.add(rs.getString("bid"));
-                    v2.add(rs.getString("username"));
-                    v2.add(rs.getString("dname"));
-                    v2.add(rs.getString("car"));
+                    v2.add(rs.getString("driver"));
                     v2.add(rs.getString("source"));
                     v2.add(rs.getString("destination"));
+                    v2.add(rs.getString("car"));
                     v2.add(rs.getString("price"));
+                   
 //                    Update_Table();
 
                 }
@@ -63,7 +62,7 @@ int r;
             System.out.println(ex);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,50 +72,81 @@ int r;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnDelete = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 0));
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 394, -1, -1));
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "BookingID", "Username", "Driver Name", "Car", "Source", "Destination", "Price"
+                "Driver", "source", "Destination", "Car", "Price", "Type"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 56, 567, 287));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 105, 589, 258));
+
+        btnDelete.setBackground(new java.awt.Color(255, 51, 0));
+        btnDelete.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 381, -1, -1));
+
+        btnBack.setBackground(new java.awt.Color(255, 255, 0));
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 457, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
-        jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CabBookAdminHome Homepage = new CabBookAdminHome();
-        Homepage .show();
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
+
+        if(jTable1.getSelectedRowCount () == 1){
+
+            tblModel.removeRow(jTable1.getSelectedRow());
+
+        } else{
+            if(jTable1.getRowCount () == 0){
+
+                JOptionPane .showMessageDialog(this, "TABLE IS EMPTY")  ;
+            }
+            else{
+                JOptionPane .showMessageDialog(this, "Please select any single row you want to delete")  ;
+            }
+            JOptionPane.showMessageDialog(null, "Driver Deleted Successfully ");
+
+        }
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        CabBookAdminHome CabBookMAinJFram = new CabBookAdminHome();
+       CabBookMAinJFram.show();
+       dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,26 +165,27 @@ int r;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewIntercityBookedCab.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDrivers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewIntercityBookedCab.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDrivers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewIntercityBookedCab.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDrivers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewIntercityBookedCab.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDrivers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewIntercityBookedCab().setVisible(true);
+                new ViewDrivers().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

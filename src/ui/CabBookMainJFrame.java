@@ -8,12 +8,12 @@ package ui;
  *
  * @author shivanirahatwad
  */
-public class BOOKACABLOGINPAGE extends javax.swing.JFrame {
+public class CabBookMainJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form BOOKACABLOGINPAGE
      */
-    public BOOKACABLOGINPAGE() {
+    public CabBookMainJFrame() {
         initComponents();
     }
 
@@ -29,53 +29,54 @@ public class BOOKACABLOGINPAGE extends javax.swing.JFrame {
         btnAdmin = new javax.swing.JButton();
         btnUser = new javax.swing.JButton();
         btnDriver = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnAdmin.setBackground(new java.awt.Color(255, 255, 204));
         btnAdmin.setText("ADMIN");
+        btnAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         btnAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 124, -1));
 
+        btnUser.setBackground(new java.awt.Color(255, 255, 204));
         btnUser.setText("USER");
+        btnUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         btnUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUserActionPerformed(evt);
             }
         });
+        getContentPane().add(btnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 124, -1));
 
+        btnDriver.setBackground(new java.awt.Color(255, 255, 204));
         btnDriver.setText("DRIVER");
+        btnDriver.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         btnDriver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDriverActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDriver, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 124, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(btnAdmin)
-                .addGap(123, 123, 123)
-                .addComponent(btnUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addComponent(btnDriver)
-                .addGap(93, 93, 93))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdmin)
-                    .addComponent(btnUser)
-                    .addComponent(btnDriver))
-                .addContainerGap(193, Short.MAX_VALUE))
-        );
+        jButton1.setBackground(new java.awt.Color(255, 255, 204));
+        jButton1.setText("SYSTEM ADMIN");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 120, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-530, -140, -1, 870));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -98,6 +99,12 @@ public class BOOKACABLOGINPAGE extends javax.swing.JFrame {
          dispose();
     }//GEN-LAST:event_btnDriverActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SystemAdminLogin sys = new SystemAdminLogin();
+         sys.show();
+         dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -115,20 +122,21 @@ public class BOOKACABLOGINPAGE extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BOOKACABLOGINPAGE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CabBookMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BOOKACABLOGINPAGE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CabBookMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BOOKACABLOGINPAGE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CabBookMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BOOKACABLOGINPAGE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CabBookMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BOOKACABLOGINPAGE().setVisible(true);
+                new CabBookMainJFrame().setVisible(true);
             }
         });
     }
@@ -137,5 +145,7 @@ public class BOOKACABLOGINPAGE extends javax.swing.JFrame {
     private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnDriver;
     private javax.swing.JButton btnUser;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
