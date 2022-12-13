@@ -160,9 +160,10 @@ public class SignUp_Driver extends javax.swing.JFrame {
 		c.s.executeUpdate(sql);
 		JOptionPane.showMessageDialog(null, "Account Created Successfully ");
                 
-                Login_Driver login = new Login_Driver();
-                login.show();
-                dispose();
+              
+                   Login_Driver  csh3 = new    Login_Driver ();
+        this.hide();
+        csh3.setVisible(true);
          }catch(Exception e){
                 System.out.println(e);
          }
@@ -170,15 +171,20 @@ public class SignUp_Driver extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-       CabBookMainJFrame MAIN = new CabBookMainJFrame();
-         MAIN.show();
-         dispose();
+      
+         
+                    CabBookMain csh = new     CabBookMain();
+        this.hide();
+        csh.setVisible(true);
+         
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- Login_Driver logindriver = new Login_Driver();
-         logindriver.show();
-         dispose();
+
+         
+                    Login_Driver csh2 = new      Login_Driver();
+        this.hide();
+        csh2.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
   

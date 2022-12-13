@@ -143,9 +143,10 @@ int r;
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        CabBookAdminHome CabBookMAinJFram = new CabBookAdminHome();
-       CabBookMAinJFram.show();
-       dispose();
+
+      CabBookAdminHome csh1 = new    CabBookAdminHome();
+        this.hide();
+        csh1.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

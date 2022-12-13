@@ -63,6 +63,7 @@ int r;
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnIntercity.setBackground(new java.awt.Color(255, 153, 153));
+        btnIntercity.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         btnIntercity.setText("INTERCITY REGISTRATION");
         btnIntercity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnIntercity.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +74,7 @@ int r;
         getContentPane().add(btnIntercity, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
 
         btnIntracity.setBackground(new java.awt.Color(255, 153, 153));
+        btnIntracity.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         btnIntracity.setText("INTRACITY REGISTRATION");
         btnIntracity.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         btnIntracity.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +92,7 @@ int r;
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 17, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CabBooking_ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -60, -1, -1));
@@ -99,21 +101,24 @@ int r;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIntercityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntercityActionPerformed
-                DriverIntercityRegistration DInterR = new DriverIntercityRegistration();
-        DInterR .show();
-        dispose();
+               
+            DriverIntercityRegistration  csh2 = new DriverIntercityRegistration();
+        this.hide();
+        csh2.setVisible(true);
     }//GEN-LAST:event_btnIntercityActionPerformed
 
     private void btnIntracityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntracityActionPerformed
-           DriverIntracityRegistration DIntraR = new DriverIntracityRegistration();
-        DIntraR .show();
-        dispose();
+         
+         DriverIntracityRegistration  csh1 = new  DriverIntracityRegistration ();
+        this.hide();
+        csh1.setVisible(true);
     }//GEN-LAST:event_btnIntracityActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
-       CabBookMAinJFram.show();
-       dispose();
+        
+         CabBookMain  csh = new   CabBookMain ();
+        this.hide();
+        csh.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

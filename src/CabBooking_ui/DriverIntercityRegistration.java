@@ -128,9 +128,11 @@ public class DriverIntercityRegistration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        DriverHome DriverH = new DriverHome();
-        DriverH .show();
-        dispose();
+    
+        
+                     DriverHome  csh2 = new  DriverHome();
+        this.hide();
+        csh2.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void txtpriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpriceActionPerformed
@@ -165,9 +167,10 @@ public class DriverIntercityRegistration extends javax.swing.JFrame {
 		c.s.executeUpdate(sql);
 		JOptionPane.showMessageDialog(null, "Account Created Successfully ");
                 
-                DriverHome driverhom = new DriverHome();
-                driverhom.show();
-                dispose();
+              
+                     DriverHome  csh2 = new  DriverHome();
+        this.hide();
+        csh2.setVisible(true);
                 
          }catch(Exception e){
                 System.out.println(e);

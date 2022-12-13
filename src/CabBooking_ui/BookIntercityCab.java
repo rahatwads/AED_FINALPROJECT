@@ -11,6 +11,7 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import javax.swing.JTextField;
 import Cab_Booking.ConnectionClass;
+import CarServicing_ui.CABSERVICEHOME;
 import java.util.Random;
 
 /**
@@ -113,15 +114,14 @@ jTextField1.setForeground(Color.red);
         jTextField5 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         choice4 = new java.awt.Choice();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setText("Car");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 298, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         btnCancel.setBackground(new java.awt.Color(255, 51, 0));
         btnCancel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -146,11 +146,11 @@ jTextField1.setForeground(Color.red);
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setText("Username");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setText("Destination");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 136, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("Source");
@@ -187,27 +187,27 @@ jTextField1.setForeground(Color.red);
                 choice3MouseClicked(evt);
             }
         });
-        getContentPane().add(choice3, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 190, 110, -1));
+        getContentPane().add(choice3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 110, -1));
 
         jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel11.setText("Price");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 415, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 105, -1));
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel10.setText("Destination to");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 374, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
         choice2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 choice2MouseClicked(evt);
             }
         });
-        getContentPane().add(choice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 107, -1));
+        getContentPane().add(choice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 107, -1));
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel9.setText("Destination From");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 339, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
         choice1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -218,23 +218,21 @@ jTextField1.setForeground(Color.red);
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setText("Driver Name");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 259, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("Name");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 218, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 107, -1));
 
         jLabel12.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel12.setText("Type");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 453, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
         getContentPane().add(choice4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 122, -1));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CabBooking_ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(-140, -40, -1, 2720));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CabBooking_ui/car-illustration-png-favpng-6cH3BWDuxDVF8FFF6sfu9tJfp.jpg"))); // NOI18N
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 180, 240));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CabBooking_ui/WhatsApp Image 2022-12-11 at 4.25.30 PM.jpeg"))); // NOI18N
+        jLabel15.setText("jLabel15");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,10 +257,9 @@ jTextField1.setForeground(Color.red);
          int aa = c.s.executeUpdate(ql);
          if(aa == 1){
              JOptionPane.showMessageDialog(null,"Cab Booked successfully");
-             
-            ConfirmationEmail confemail = new ConfirmationEmail();
-            confemail.show();
-            dispose();
+              ConfirmationEmail csh = new   ConfirmationEmail();
+        this.hide();
+        csh.setVisible(true); 
                       
           
          } else {
@@ -283,9 +280,12 @@ jTextField1.setForeground(Color.red);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        CabBookHomePage userhome = new CabBookHomePage();
-         userhome.show();
-         dispose();
+
+                 
+        CabBookHomePage csh = new CabBookHomePage();
+        this.hide();
+        csh.setVisible(true);
+        
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void choice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_choice3MouseClicked
@@ -396,8 +396,7 @@ jTextField1.setForeground(Color.red);
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

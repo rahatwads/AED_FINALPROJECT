@@ -8,6 +8,7 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import javax.swing.JTextField;
 import Cab_Booking.ConnectionClass;
+import CarServicing_ui.CABSERVICEHOME;
 import java.util.Random;
 
 public class BookIntracityCabs extends javax.swing.JFrame  {
@@ -104,7 +105,7 @@ jTextField1.setForeground(Color.red);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("Book ID");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 54, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("Source");
@@ -112,7 +113,7 @@ jTextField1.setForeground(Color.red);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setText("Destination");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setText("Username");
@@ -199,7 +200,7 @@ jTextField1.setForeground(Color.red);
                 choice2MouseClicked(evt);
             }
         });
-        getContentPane().add(choice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 107, -1));
+        getContentPane().add(choice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 107, -1));
 
         choice3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -243,10 +244,10 @@ jTextField1.setForeground(Color.red);
          int aa = c.s.executeUpdate(ql);
          if(aa == 1){
              JOptionPane.showMessageDialog(null,"Cab Booked successfully");
-             ConfirmationEmail confemail = new ConfirmationEmail();
-            confemail.show();
-            dispose();
-                        
+            
+                        ConfirmationEmail csh = new   ConfirmationEmail();
+        this.hide();
+        csh.setVisible(true);  
           
          } else {
              JOptionPane.showMessageDialog(null,"Please fill all the details");
@@ -263,9 +264,11 @@ jTextField1.setForeground(Color.red);
     }//GEN-LAST:event_btnBookActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        CabBookHomePage userhome = new CabBookHomePage();
-         userhome.show();
-         dispose();
+
+                 
+        CabBookHomePage csh = new  CabBookHomePage();
+        this.hide();
+        csh.setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void choice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_choice3MouseClicked

@@ -102,9 +102,10 @@ public class Login_Driver extends javax.swing.JFrame {
             ResultSet rs = con.s.executeQuery(sql);
             if (rs.next()) {
 
-                DriverHome driverhome = new DriverHome(username);
-                driverhome.show();
-                dispose();
+              
+                    DriverHome csh = new   DriverHome();
+        this.hide();
+        csh.setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Login or Password!");
@@ -119,15 +120,18 @@ public class Login_Driver extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
-        setVisible(false);
-        SignUp_Driver su = new SignUp_Driver();
-        su.setVisible(true);
+        
+                            SignUp_Driver csh2 = new   SignUp_Driver();
+        this.hide();
+        csh2.setVisible(true);
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
-        CabBookMAinJFram.show();
-        dispose();
+      
+        
+                             CabBookMain  csh3 = new    CabBookMain ();
+        this.hide();
+        csh3.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {

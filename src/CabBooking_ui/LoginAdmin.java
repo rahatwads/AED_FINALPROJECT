@@ -81,14 +81,16 @@ public class LoginAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-         String patient = txtUsername.getText();
+         String user = txtUsername.getText();
         String password = txtPassword.getText();
         
-        if (patient.equals("admin") && password.equals("admin")) {
+        if (user.equals("admin") && password.equals("admin")) {
             
-         CabBookAdminHome AdminHom = new CabBookAdminHome();
-         AdminHom.show();
-         dispose(); 
+        
+         
+                    CabBookAdminHome csh2 = new  CabBookAdminHome();
+        this.hide();
+        csh2.setVisible(true);
             
         }else {
         jLabel4.setText("Incorrect Credentials,Please enter correct details");
@@ -96,9 +98,10 @@ public class LoginAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
-       CabBookMAinJFram.show();
-       dispose();
+         
+        CabBookMain csh = new  CabBookMain();
+        this.hide();
+        csh.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

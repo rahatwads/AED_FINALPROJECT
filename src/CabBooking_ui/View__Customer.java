@@ -117,9 +117,9 @@ public class View__Customer extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-         CabBookHomePage cabbook = new CabBookHomePage();
-         cabbook.show();
-         dispose();
+          CabBookAdminHome csh1 = new    CabBookAdminHome();
+        this.hide();
+        csh1.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 public void Update_Table()
 {

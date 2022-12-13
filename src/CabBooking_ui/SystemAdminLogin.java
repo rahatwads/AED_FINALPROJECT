@@ -85,9 +85,10 @@ public class SystemAdminLogin extends javax.swing.JFrame {
 
         if (patient.equals("system") && password.equals("system")) {
 
-            CabBookAdminHome AdminHom = new CabBookAdminHome();
-            AdminHom.show();
-            dispose();
+          
+            SystemHome csh = new     SystemHome();
+        this.hide();
+        csh.setVisible(true);
 
         }else {
             jLabel4.setText("Incorrect Credentials,Please enter correct details");
@@ -95,9 +96,11 @@ public class SystemAdminLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CabBookMainJFrame CabBookMAinJFram = new CabBookMainJFrame();
-        CabBookMAinJFram.show();
-        dispose();
+      
+        
+         CabBookMain csh = new      CabBookMain();
+        this.hide();
+        csh.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
